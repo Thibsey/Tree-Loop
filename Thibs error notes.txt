@@ -1,0 +1,2 @@
+Turn off CI errors?
+search for: ini_set('display_errors
