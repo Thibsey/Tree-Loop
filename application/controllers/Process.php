@@ -8,20 +8,20 @@ class Process extends CI_Controller
     }
     public function register()
     {
-        // $this->load->library('form_validation');
-        // $this->form_validation->set_rules('userName', 'Username', 'required|alpha');
-        // $this->form_validation->set_rules('companyName', 'Company Name', 'required|alpha_numeric_spaces');
-        // $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        // $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
-        // $this->form_validation->set_rules('confirmPassword', 'Password Confirm', 'required|matches[password]');
-        // $this->form_validation->set_rules('contactAddress', 'Contact Address', 'required|alpha');
-        // $this->form_validation->set_rules('contactPhoneNumber', 'Contact Phone Number', 'required|numeric');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('userName', 'Username', 'required|alpha');
+        $this->form_validation->set_rules('companyName', 'Company Name', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
+        $this->form_validation->set_rules('confirmPassword', 'Password Confirm', 'required|matches[password]');
+        $this->form_validation->set_rules('contactAddress', 'Contact Address', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('contactPhoneNumber', 'Contact Phone Number', 'required|numeric');
 
-        // if ($this->form_validation->run() == false) {
-        //     $error['error'] = validation_errors();
-        //     $this->load->view('login_register', $error);
+        if ($this->form_validation->run() == false) {
+            $error['error'] = validation_errors();
+            $this->load->view('login_register', $error);
 
-        // } else {
+        } else {
             $userName = $this->input->post('userName', true);
             $rankId = $this->input->post('rankId', true);
             $companyName = $this->input->post('companyName', true);
@@ -43,10 +43,6 @@ class Process extends CI_Controller
                 'contact_address' => $contactAddress,
                 'contact_pho_num' => $contactPhoneNumber
             );
-            // echo "<pre>";
-            // var_dump($query);
-            // echo "</pre>";
-            // die();
             $this->load->model('VentureModel');
             $add_user = $this->VentureModel->add_user($query);
             if ($add_user) {
@@ -55,7 +51,7 @@ class Process extends CI_Controller
                 $error['error'] = "Registration failed";
                 $this->load->view('login_register', $error);
             }
-        //}
+        }
     }
 
 
@@ -88,3 +84,8 @@ class Process extends CI_Controller
 
 
 
+
+// echo "<pre>";
+// var_dump($query);
+// echo "</pre>";
+// die();

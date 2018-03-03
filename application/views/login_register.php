@@ -12,8 +12,8 @@
 <div class="register">
 			<h2>Register</h2>
 
-            <?php if (isset($errors)){
-				echo $errors; }?>
+            <?php if (isset($error)){
+				echo $error; }?>
 
 			
 			<form action="register" method="POST">
