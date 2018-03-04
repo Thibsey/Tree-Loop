@@ -1,3 +1,6 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +20,6 @@
 
 			
 			<form action="register" method="POST">
-
 				<input type="text" name="userName" placeholder="User Name">
 				<br>
 				<br>
@@ -40,9 +42,13 @@
 				<br>
 				<br>
                 <input type="hidden" name="rankId" value="3">
-    
 				<input type="submit" vamue="Register">
 			</form>
+                <input type="text" name="email-login" placeholder="Email">
+                <br>
+				<br>
+                <input type="password" name="password-login" placeholder="Password">
+            <form action="login" method="POST"></form>
 			
 		</div>
 </body>

@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Process extends CI_Controller 
 {
@@ -55,29 +56,29 @@ class Process extends CI_Controller
     }
 
 
-    // public function login()
-    // {
-    //     $user_login = $this->input->post('user-login', true);
-    //     $password_login = $this->input->post('password-login', true);
-    //     $this->load->model('modelbec');
-    //     $user = $this->VentureModel->get_user_by_username($user_login);
-    //     $encrypted_password = md5($password_login . '' . $user['salt_data']);
-    //     if ($user && $user['password'] == $encrypted_password) {
-    //         $user1 = array(
-    //             'id' => $user['id'],
-    //             'email' => $user['email'],
-    //             'user_name' => $user['user_name'],
-    //             'age' => $user['age'],
-    //             'is_logged_in' => true
-    //         );
-    //         $this->session->set_userdata($user1);
-    //         header('Location: http://localhost/');
+    public function login()
+    {
+        $email_login = $this->input->post('email-login', true);
+        $password_login = $this->input->post('password-login', true);
+        $this->load->model('modelbec');
+        $user = $this->VentureModel->get_user_by_username($user_login);
+        $encrypted_password = md5($password_login . '' . $user['salt_data']);
+        if ($user && $user['password'] == $encrypted_password) {
+            $user1 = array(
+                'id' => $user['id'],
+                'email' => $user['email'],
+                'user_name' => $user['user_name'],
+                'age' => $user['age'],
+                'is_logged_in' => true
+            );
+            $this->session->set_userdata($user1);
+            header('Location: http://localhost/');
 
-    //     } else {
-    //         $error['logerror'] = "Wrong Username or Email";
-    //         $this->load->view('register', $error);
-    //     }
-    // }
+        } else {
+            $error['logerror'] = "Wrong Username or Email";
+            $this->load->view('register', $error);
+        }
+    }
 
 
 }
