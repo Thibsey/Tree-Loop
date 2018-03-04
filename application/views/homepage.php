@@ -136,6 +136,7 @@ h1, h2, h3, h4, h5, h6, figure {
     padding-top:80px;
 }
 
+
     </style>
 	</head>
 	<body>	
@@ -158,7 +159,8 @@ h1, h2, h3, h4, h5, h6, figure {
 			<div class="col-md-8 col-md-offset-2 text-center" id="idcenter">
 				<p>Connecting innovators to make things happen
 Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!
-</p>
+Connecting innovators to make things happen
+Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
 <a href="#">learn more</a>
 			</div>
 		</div>	
@@ -166,16 +168,36 @@ Venture Café Foundation builds innovation <br> communities. We host the largest
     <div id="fh5co-intro-section">
 		<div>
 			<div class="col-md-8 col-md-offset-2 text-center">
-				<h2>Lesser is a creative agency that love to create functional website</h2>
+				<h1>Recently Added</h1>
 			</div>
 		</div>
 	</div>
     <div id="fh5co-intro-section">
-		<div>
-			<div class="col-md-8 col-md-offset-2 text-center">
-				<h2>Lesser is a creative agency that love to create functional website</h2>
+		<table>
+        <tr>
+        <td>
+			<div class="col-md-8 col-md-offset-2 text-center" >
+                <img src="https://i.imgur.com/M6JQeoM.png" alt="">
+                <p>Connecting innovators to make things happen
+Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
 			</div>
-        </div>        
+            </td>
+            <td>
+            <div class="col-md-8 col-md-offset-2 text-center" >
+                <img src="https://i.imgur.com/M6JQeoM.png" alt="">
+                <p>Connecting innovators to make things happen
+Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
+			</div>
+            </td>
+            <td>
+            <div class="col-md-8 col-md-offset-2 text-center" >
+                <img src="https://i.imgur.com/M6JQeoM.png" alt="">
+                <p>Connecting innovators to make things happen
+Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
+			</div>
+            </td>
+            </tr>
+        </table>        
 	</div>
 	</div>
 	
