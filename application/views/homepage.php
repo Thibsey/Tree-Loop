@@ -1,3 +1,6 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +15,9 @@
     <h1>We are inside Home Page</h1>
    
     <a href="/register"><button>Register</button></a> 
+    <br>
+    <br>
+    <a href="/postpage"><button>Post Job</button></a> 
 
 </body>
 </html>
