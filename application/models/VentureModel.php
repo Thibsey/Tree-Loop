@@ -15,6 +15,11 @@ class VentureModel extends CI_Model
     public function insertJob($postInfo) 
 	{
         return $this->db->insert('posts', $postInfo);
-	}
+    }
+
+    public function one_post($num)
+    {
+        return $this->db->query("SELECT * FROM posts WHERE id = $num")->row_array();
+    }
 }
 ?>

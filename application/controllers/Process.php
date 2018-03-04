@@ -97,34 +97,32 @@ class Process extends CI_Controller
 
     public function postjob()
    {
-        //  var_dump($postInfo);
-        //  die();
-         $this->form_validation->set_rules('title', 'Title', 'required');
-         $this->form_validation->set_rules('description', 'Job Description', 'required');
-         $this->form_validation->set_rules('company-url', 'Link to Original Offer', 'required|valid_url');
-
-        //  $this->form_validation->set_rules('contact', 'Contact', 'required');
-             
-             if ($this->form_validation->run() == false) 
-             {
-                 $validationerror = validation_errors();
-                 $this->load->view('postpage', array('errors' => $validationerror));
-             } 
-             else
-             {
-                 $title = $this->input->post('title', TRUE);
-                 $description = $this->input->post('description', TRUE);
-                 $companyUrl = $this->input->post('company-url', TRUE);
-                 $verify = $this->input->post('verify', TRUE);
-                 $userId = $this->input->post('id', TRUE);
-                 
-                 $postInfo = $arrayName = array(
-                     'title' => $title,
-                     'post' => $description,
-                     'verify' => $verify,
-                     'company_url' => $companyUrl,
-                     'users_id' => $userId
-                 );
+       $this->form_validation->set_rules('title', 'Title', 'required');
+       $this->form_validation->set_rules('description', 'Job Description', 'required');
+       $this->form_validation->set_rules('company-url', 'Link to Original Offer', 'required|valid_url');
+       
+       //  $this->form_validation->set_rules('contact', 'Contact', 'required');
+       
+       if ($this->form_validation->run() == false) 
+       {
+           $validationerror = validation_errors();
+           $this->load->view('postpage', array('errors' => $validationerror));
+        } 
+        else
+        {
+            $title = $this->input->post('title', TRUE);
+            $description = $this->input->post('description', TRUE);
+            $companyUrl = $this->input->post('company-url', TRUE);
+            $verify = $this->input->post('verify', TRUE);
+            $userId = $this->input->post('id', TRUE);
+            
+            $postInfo = $arrayName = array(
+                'title' => $title,
+                'post' => $description,
+                'verify' => $verify,
+                'company_url' => $companyUrl,
+                'users_id' => $userId
+            );
                  $this->load->model('VentureModel');
                  $this->VentureModel->insertJob($postInfo);
                  $this->load->view('postpage');
@@ -132,11 +130,20 @@ class Process extends CI_Controller
      }
 
      public function logout()
-     {
+    {
          $this->session->sess_destroy();
          $this->session->set_userdata($user1 = null);
          $this->load->view('homepage');
-     }
+    }
+
+
+    public function onePost($arg)
+    {
+        $this->load->model('VentureModel');
+        $postInfo['posts'] = $this->VentureModel->one_post($arg);
+        $this->load->view('showOnepage', $postInfo);
+        
+    }
 }
 
 
