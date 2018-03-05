@@ -51,7 +51,7 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
         text-align:center;
         }
         a {
-        color: #1FB57B;
+        color: #e06a26;
         -webkit-transition: 0.5s;
         -o-transition: 0.5s;
         transition: 0.5s;
@@ -137,11 +137,14 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
         #mainpic{
         
         }
+        #footerone{
+        display:inline-block;
+        padding-right:800px;
 
-}
-#footertow{
-  display:inline-block;
-  }
+        }
+        #footertow{
+        display:inline-block;
+        }
 
     </style>
 </head>
@@ -150,8 +153,8 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 	<header>
 		<div  id="headerpic">
 			<a href="http://localhost"><img src="https://i.imgur.com/M6JQeoM.png"></a>
-    </div class="buttonclass">
-    <div id="headernav">
+        </div class="buttonclass">
+        <div id="headernav">
             <button type="button" class="btn btn-outline-secondary">thuersday gathering</button>
             <button type="button" class="btn btn-outline-secondary">international</button>
             <button type="button" class="btn btn-outline-secondary">community</button>
