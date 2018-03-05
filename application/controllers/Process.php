@@ -5,7 +5,9 @@ class Process extends CI_Controller
 {
     public function index()
     {
-        $this->load->view('homepage');
+        $this->load->model('VentureModel');
+        $jobs['listjobs'] = $this->VentureModel->home_page_list();
+        $this->load->view('homepage', $jobs);
     }
     public function register()
     {
@@ -96,7 +98,7 @@ class Process extends CI_Controller
     }
 
     public function postjob()
-   {
+    {
        $this->form_validation->set_rules('title', 'Title', 'required');
        $this->form_validation->set_rules('description', 'Job Description', 'required');
        $this->form_validation->set_rules('company-url', 'Link to Original Offer', 'required|valid_url');
@@ -126,10 +128,10 @@ class Process extends CI_Controller
                  $this->load->model('VentureModel');
                  $this->VentureModel->insertJob($postInfo);
                  $this->load->view('postpage');
-             }
-     }
+        }
+    }
 
-     public function logout()
+    public function logout()
     {
          $this->session->sess_destroy();
          $this->session->set_userdata($user1 = null);

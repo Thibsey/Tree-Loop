@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed'); ?>
+defined('BASEPATH') or exit('No direct script access allowed');?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +13,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 	
 	<link rel="shortcut icon" href="favicon.ico">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700,900' rel='stylesheet' type='text/css'>
 
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
@@ -113,9 +113,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             padding-top:50px;
         }
         .firstpic{
-            background-image: url("https://i.imgur.com/WZW82Wm.jpg");
-            height:500px;
+            background-image: url("https://i.imgur.com/UhUisHX.jpg");
+            height: 500px;
         }
+        
         #idcenter{
             text-align:center;
             padding-top:80px;
@@ -149,14 +150,15 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <button type="button" class="btn btn-outline-secondary">community</button>
             <button type="button" class="btn btn-outline-secondary">about us</button>
             <button type="button" class="btn btn-outline-secondary">contact us</button>
-            <a href="join"><button type="button" class="btn btn-outline-secondary">login-register</button></a>
+            <a href="login"><button type="button" class="btn btn-outline-secondary">login-register</button></a>
             
 		</div>
 		
 	</header>
 	<div id="fh5co-intro-section">
 		<div class="firstpic">
-			<div class="col-md-8 col-md-offset-2 text-center" id="idcenter">
+			<div class="col-md-12 col-md-offset-2 text-center" id="idcenter">
+                <br><br><br><br><br><br><br>
 				<p>Connecting innovators to make things happen Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community! Connecting innovators to make things happen Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
                 <a href="#">learn more</a>
 			</div>
@@ -164,8 +166,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 	</div>
     <div id="fh5co-intro-section">
 		<div>
-			<div class="col-md-8 col-md-offset-2 text-center">
+			<div class="col-md-12 col-md-offset-2 text-center">
 				<h1>Recently Added</h1>
+                <?php if (isset($listjobs)) {
+                    for ($i=0; $i < 5; $i++) {  ?>
+                    <strong><a href="onepost/<?= $listjobs[$i]['id']?>"><?= $listjobs[$i]['title']?></a></strong>
+                    <br>
+                    <br>
+           <?php }} ?>
 			</div>
 		</div>
 	</div>

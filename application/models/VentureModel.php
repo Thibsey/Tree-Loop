@@ -21,5 +21,10 @@ class VentureModel extends CI_Model
     {
         return $this->db->query("SELECT * FROM posts WHERE id = $num")->row_array();
     }
+
+    public function home_page_list()
+    {
+        return $this->db->query("SELECT * FROM posts WHERE verify = 1 ORDER BY created_at DESC;")->result_array();
+    }
 }
 ?>
