@@ -33,6 +33,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <style>
 
@@ -149,7 +151,7 @@ h1, h2, h3, h4, h5, h6, figure {
             <button type="button" class="btn btn-outline-secondary">community</button>
             <button type="button" class="btn btn-outline-secondary">about us</button>
             <button type="button" class="btn btn-outline-secondary">contact us</button>
-            <a href="join"><button type="button" class="btn btn-outline-secondary">login-register</button></a>
+            <a href="register"><button type="button" class="btn btn-outline-secondary">login-register</button></a>
             
 		</div>
 		
