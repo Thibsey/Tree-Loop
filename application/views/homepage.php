@@ -15,6 +15,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 	<link rel="shortcut icon" href="favicon.ico">
 
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700,900' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -50,7 +51,7 @@ body {
   text-align:center;
 }
 a {
-  color: #1FB57B;
+  color: #e06a26;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
@@ -94,11 +95,12 @@ h1, h2, h3, h4, h5, h6, figure {
   border-radius: 4px;
 }
 #fh5co-footer {
-  padding: 7em 0;
+  padding: 4em 0;
   float: left;
   width: 100%;
   position: relative;
   background: #262626;
+  padding-top:50px;
 }
 #fh5co-page {
   position: relative;
@@ -132,10 +134,14 @@ h1, h2, h3, h4, h5, h6, figure {
     padding-top:40px;
     padding-right:350px;
 }
-#mainpic{
-   
-}
+#footerone{
+  display:inline-block;
+  padding-right:800px;
 
+}
+#footertow{
+  display:inline-block;
+  }
 
     </style>
 	</head>
@@ -203,10 +209,20 @@ Venture Café Foundation builds innovation <br> communities. We host the largest
 	</div>
 	</div>
 	
-	<footer id="fh5co-footer" role="contentinfo">
-	
-	
-	</footer>
+    <footer id="fh5co-footer" role="contentinfo">
+      <div id="footerone">
+        <a href="#"> Credo </a>&nbsp;&nbsp;&nbsp;
+        <a href="#"> Support </a>&nbsp;&nbsp;&nbsp;
+        <a href="#"> Contact </a>
+      </div>
+      <div id="footertow">
+          <a href="#" class="fa fa-facebook"></a>&nbsp;&nbsp;&nbsp;
+          <a href="#" class="fa fa-twitter"></a>&nbsp;&nbsp;&nbsp;
+          <a href="#" class="fa fa-linkedin"></a>&nbsp;&nbsp;&nbsp;
+          <a href="#" class="fa fa-instagram"></a>
+          
+      </div>
+    </footer>
 	</div>
 	
 	
