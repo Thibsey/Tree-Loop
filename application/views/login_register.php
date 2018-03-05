@@ -12,7 +12,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script src="main.js"></script>
 </head>
 <body>
-<div class="register">
+	<div class="logout_button">
+
+		<?php 
+			if(null !== $this->session->userdata('is_logged_in')){ ?>
+			<a href="/logout"><button>Logout</button></a> 
+			<?php } ?>
+	</div>
+	<div class="register">
+
 			<h2>Register</h2>
 
             <?php if (isset($error)){
@@ -44,12 +52,26 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <input type="hidden" name="rankId" value="3">
 				<input type="submit" vamue="Register">
 			</form>
-                <input type="text" name="email-login" placeholder="Email">
-                <br>
-				<br>
-                <input type="password" name="password-login" placeholder="Password">
-            <form action="login" method="POST"></form>
-			
+               
+           
 		</div>
+		<div class="login">
+			
+
+			<h2>Login</h2>
+
+			<?php if(isset($logerror))
+			{ echo $logerror; } ?>
+
+			<form action="login" method="POST">
+				<input type="text" name="email-login" placeholder="Email">
+				<br>
+				<br>
+				<input type="password" name="password-login" placeholder="Password">
+				<br>
+				<br>
+				<input type="submit" value="Login">
+			</form>
+		</div>	
 </body>
 </html>
