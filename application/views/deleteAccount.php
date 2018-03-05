@@ -12,18 +12,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script src="main.js"></script>
 </head>
 <body>
-    <h1>We are inside Home Page</h1>
-   
-    <a href="/register"><button>Register</button></a> 
+    <h1>We are inside DELETE Page</h1>
     <br>
-    <br>
-    <a href="/postpage"><button>Post Job</button></a> 
-    <br>
-    <br>
-    <?php if(null !== $this->session->userdata('id')){ ?>
-    <a href="/editPostShow/<?= $this->session->userdata['id'] ?>"><button>Edit Job Post</button></a> 
-    <?php } ?>
+   <h2>Are you sure you want to delete your account?</h2>
+   <br>
+    </div>
+    <div class="DeleteUserButton">
+        <a href="/deleteUser/<?= $this->session->userdata['id'] ?>"><button>DELETE</button></a> 
+    
+    </div>
+    <a href="/index"><button>Back to Home Page</button></a> 
 
 
 </body>
 </html>
+
+
+

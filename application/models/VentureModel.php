@@ -21,5 +21,33 @@ class VentureModel extends CI_Model
     {
         return $this->db->query("SELECT * FROM posts WHERE id = $num")->row_array();
     }
+
+    public function show_post($arg)
+    {
+        $query = "SELECT * FROM posts WHERE users_id = $arg ORDER BY posts.id DESC";
+		$postsToshow = $this->db->query($query)->result_array();
+		return $postsToshow;
+    }
+
+    public function edit_item($id, $arg) 
+	{
+		$query = "UPDATE posts SET title = ?, post = ?, company_url= ? WHERE id = $id";
+		$values = [$arg['title'], $arg['post'], $arg['company_url']];
+        $this->db->query($query, $values);
+    }
+    
+    public function delete_post($id)
+    {
+        $query = "DELETE FROM posts WHERE id = $id";
+        $this->db->query($query);
+    }
+
+    public function delete_user($id)
+    {
+        $query = "DELETE FROM posts WHERE users_id = $id";
+        $query2 = "DELETE FROM users WHERE id = $id";
+        $this->db->query($query);
+        $this->db->query($query2);
+    }
 }
 ?>
