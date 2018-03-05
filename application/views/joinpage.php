@@ -17,9 +17,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700,900' rel='stylesheet' type='text/css'>
 
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	
 	
 	<!-- Bootstrap  -->
@@ -149,63 +146,71 @@ h1, h2, h3, h4, h5, h6, figure {
             <button type="button" class="btn btn-outline-secondary">community</button>
             <button type="button" class="btn btn-outline-secondary">about us</button>
             <button type="button" class="btn btn-outline-secondary">contact us</button>
-            <a href="join"><button type="button" class="btn btn-outline-secondary">login-register</button></a>
-            
 		</div>
 		
 	</header>
-	<div id="fh5co-intro-section">
-		<div class="firstpic">
-			<div class="col-md-8 col-md-offset-2 text-center" id="idcenter">
-				<p>Connecting innovators to make things happen
-Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!
-Connecting innovators to make things happen
-Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
-<a href="#">learn more</a>
-			</div>
-		</div>	
-	</div>
-    <div id="fh5co-intro-section">
-		<div>
-			<div class="col-md-8 col-md-offset-2 text-center">
-				<h1>Recently Added</h1>
-			</div>
-		</div>
-	</div>
-    <div id="fh5co-intro-section">
-		<table>
-        <tr>
-        <td>
-			<div class="col-md-8 col-md-offset-2 text-center" id="mainpic">
-                <img src="https://i.imgur.com/M6JQeoM.png" alt="" align="bottom">
-                <p>Connecting innovators to make things happen
-Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
-			</div>
-            </td>
-            <td>
-            <div class="col-md-8 col-md-offset-2 text-center" >
-                <img src="https://i.imgur.com/M6JQeoM.png" alt="">
-                <p>Connecting innovators to make things happen
-Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
-			</div>
-            </td>
-            <td>
-            <div class="col-md-8 col-md-offset-2 text-center" >
-                <img src="https://i.imgur.com/M6JQeoM.png" alt="">
-                <p>Connecting innovators to make things happen
-Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
-			</div>
-            </td>
-            </tr>
-        </table>        
-	</div>
-	</div>
-	
+
+<div id="loginid">
+    <form class="form-inline">
+    <label class="sr-only" for="inlineFormInputGroup">Email</label><br>
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+      <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="email"><br>
+    </div>
+    <label class="sr-only" for="inlineFormInput">Password</label><br>
+    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="password"><br>
+
+    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox"> Remember me
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<div id="registerid">
+  <form class="form-inline">
+      <label class="sr-only" for="inlineFormInputGroup">Company Name :</label><br>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Company name..."><br>
+  </div>
+  <label class="sr-only" for="inlineFormInputGroup">Company Name :</label><br>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Company name..."><br>
+  </div>
+  <label class="sr-only" for="inlineFormInputGroup">Company Name :</label><br>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Company name..."><br>
+  </div>
+  <label class="sr-only" for="inlineFormInputGroup">Company Name :</label><br>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Company name..."><br>
+  </div>
+  <label class="sr-only" for="inlineFormInputGroup">Company Name :</label><br>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Company name..."><br>
+  </div>
+      <label class="sr-only" for="inlineFormInput">Password</label><br>
+      <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="password"><br>
+
+      <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox"> Remember me
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+
+
+
+
 	<footer id="fh5co-footer" role="contentinfo">
 	
 	
 	</footer>
-	</div>
+	
 	
 	
 

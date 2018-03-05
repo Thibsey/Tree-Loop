@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 $route['default_controller'] = 'process';
+$route['login'] = 'processes/login';
 $route['index'] = 'process/index';
 $route['register'] = 'process/register';
 $route['login'] = 'process/login';
