@@ -15,6 +15,7 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 	<link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700,900' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -137,6 +138,10 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
         
         }
 
+}
+#footertow{
+  display:inline-block;
+  }
 
     </style>
 </head>
@@ -205,10 +210,20 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 	</div>
 	</div>
 	
-	<footer id="fh5co-footer" role="contentinfo">
-	
-	
-	</footer>
+    <footer id="fh5co-footer" role="contentinfo">
+      <div id="footerone">
+        <a href="#"> Credo </a>&nbsp;&nbsp;&nbsp;
+        <a href="#"> Support </a>&nbsp;&nbsp;&nbsp;
+        <a href="#"> Contact </a>
+      </div>
+      <div id="footertow">
+          <a href="#" class="fa fa-facebook"></a>&nbsp;&nbsp;&nbsp;
+          <a href="#" class="fa fa-twitter"></a>&nbsp;&nbsp;&nbsp;
+          <a href="#" class="fa fa-linkedin"></a>&nbsp;&nbsp;&nbsp;
+          <a href="#" class="fa fa-instagram"></a>
+          
+      </div>
+    </footer>
 	</div>
 	
 	
