@@ -131,20 +131,66 @@ class Process extends CI_Controller
         }
     }
 
-    public function logout()
+     public function onePost($arg)
+     {
+         $this->load->model('VentureModel');
+         $postInfo['posts'] = $this->VentureModel->one_post($arg);
+         $this->load->view('showOnepage', $postInfo);
+     }
+
+    //  public function showPost()
+    //  {
+    //     $this->load->model('VentureModel');
+    //     $query['postsToShow'] = $this->VentureModel->show_post();
+    //     var_dump($id);
+    //     die($query);
+	// 	$this->load->view('editPostPage', $query);
+    //  }
+     public function editPostShow($arg)//show the post inside the form, ready to be edited
+     {
+		$this->load->model('VentureModel');
+        $query['showIt'] = $this->VentureModel->show_post($arg);
+        // var_dump($id);
+        // die();
+		$this->load->view('editPostPage', $query);
+    }
+
+    public function editPost($arg)
+	{
+        $editInfo = $this->input->post(NULL, TRUE);
+        // var_dump($editPost);
+        // var_dump($args);
+        // die();
+		$this->load->model('VentureModel');
+		$this->VentureModel->edit_item($arg, $editInfo);
+		$this->load->view('editPostPage');
+    } 
+    
+    public function deletePost($id)
+    {
+        $this->load->model('VentureModel');
+		$query['deleteIt'] = $this->VentureModel->delete_post($id);
+		$this->load->view('editPostPage');
+    }
+
+    public function deletePage()
+    {
+        $this->load->view('deleteAccount');
+    }
+    public function deleteUser($id)
+    {
+        $this->load->model('VentureModel');
+        $this->VentureModel->delete_user($id);
+        $this->session->sess_destroy();
+        $this->session->set_userdata($user1 = null);
+        $this->load->view('homepage');	
+    } 
+
+     public function logout()
     {
          $this->session->sess_destroy();
          $this->session->set_userdata($user1 = null);
          $this->load->view('homepage');
-    }
-
-
-    public function onePost($arg)
-    {
-        $this->load->model('VentureModel');
-        $postInfo['posts'] = $this->VentureModel->one_post($arg);
-        $this->load->view('showOnepage', $postInfo);
-        
     }
 }
 

@@ -228,8 +228,18 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
       </div>
     </footer>
 	</div>
-	
-	
+    <h1>We are inside Home Page</h1>
+   
+    <a href="/register"><button>Register</button></a> 
+    <br>
+    <br>
+    <a href="/postpage"><button>Post Job</button></a> 
+    <br>
+    <br>
+    <?php if(null !== $this->session->userdata('id')){ ?>
+    <a href="/editPostShow/<?= $this->session->userdata['id'] ?>"><button>Edit Job Post</button></a> 
+    <?php } ?>
+
 
 </body>
 </html>
