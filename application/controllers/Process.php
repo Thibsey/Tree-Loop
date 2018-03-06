@@ -178,7 +178,7 @@ class Process extends CI_Controller
         $query['titles'] = $this->VentureModel->addOneTitle($id);
         // var_dump($query);
         // die();
-    	$this->load->view('showpage', $query);
+        $this->load->view('showpage', $query);
 	}
     
     public function deletePost($id)
@@ -192,6 +192,7 @@ class Process extends CI_Controller
     {
         $this->load->view('deleteAccount');
     }
+
     public function deleteUser($id)
     {
         $this->load->model('VentureModel');
