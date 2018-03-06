@@ -12,7 +12,9 @@ class Process extends CI_Controller
 
     public function showpage()
     {
-        $this->load->view('showpage');
+        $this->load->model('VentureModel');
+        $jobs['titles'] = $this->VentureModel->show_page_list();
+        $this->load->view('showpage', $jobs);
     }
 
     public function register()
@@ -103,10 +105,90 @@ class Process extends CI_Controller
         $this->load->view('postpage');
 
     }
-    public function adminpanal()
+    public function adminpanel()
     {
-        $this->load->view('adminpanal');
+        if ($this->session->userdata('rank_id') < 2) {
+            $this->load->model('VentureModel');
+            $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
+            $data['users'] = $this->VentureModel->admin_take_users();
+            $data['posts'] = $this->VentureModel->admin_take_posts();
+            $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $this->load->view('adminpanal', $data);
+        } else {
+            $this->load->model('VentureModel');
+            $jobs['listjobs'] = $this->VentureModel->home_page_list();
+            $this->load->view('homepage', $jobs);
+        }
+    }
 
+    public function adminVerifyPost($id)
+    {
+        if ($this->session->userdata('id') < 2) {
+            $this->load->model('VentureModel');
+            $this->VentureModel->admin_verify_post($id);
+            $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
+            $data['users'] = $this->VentureModel->admin_take_users();
+            $data['posts'] = $this->VentureModel->admin_take_posts();
+            $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $this->load->view('adminpanal', $data);
+        } else {
+            $this->load->model('VentureModel');
+            $jobs['listjobs'] = $this->VentureModel->home_page_list();
+            $this->load->view('homepage', $jobs);
+        }
+
+    }
+
+    public function adminDeletePost($id)
+    {
+        if ($this->session->userdata('id') < 2) {
+            $this->load->model('VentureModel');
+            $this->VentureModel->admin_delete_post($id);
+            $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
+            $data['users'] = $this->VentureModel->admin_take_users();
+            $data['posts'] = $this->VentureModel->admin_take_posts();
+            $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $this->load->view('adminpanal', $data);
+        } else {
+            $this->load->model('VentureModel');
+            $jobs['listjobs'] = $this->VentureModel->home_page_list();
+            $this->load->view('homepage', $jobs);
+        }
+    }
+
+    public function adminVerifyUser($id)
+    {
+        if ($this->session->userdata('id') < 2) {
+            $this->load->model('VentureModel');
+            $this->VentureModel->admin_verify_user($id);
+            $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
+            $data['users'] = $this->VentureModel->admin_take_users();
+            $data['posts'] = $this->VentureModel->admin_take_posts();
+            $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $this->load->view('adminpanal', $data);
+        } else {
+            $this->load->model('VentureModel');
+            $jobs['listjobs'] = $this->VentureModel->home_page_list();
+            $this->load->view('homepage', $jobs);
+        }
+        
+    }
+    public function adminDeleteUser($id)
+    {
+        if ($this->session->userdata('id') < 2) {
+            $this->load->model('VentureModel');
+            $this->VentureModel->admin_delete_user($id);
+            $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
+            $data['users'] = $this->VentureModel->admin_take_users();
+            $data['posts'] = $this->VentureModel->admin_take_posts();
+            $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $this->load->view('adminpanal', $data);
+        } else {
+            $this->load->model('VentureModel');
+            $jobs['listjobs'] = $this->VentureModel->home_page_list();
+            $this->load->view('homepage', $jobs);
+        }
+        
     }
 
     public function postjob()
@@ -143,12 +225,12 @@ class Process extends CI_Controller
         }
     }
 
-     public function onePost($arg)
-     {
-         $this->load->model('VentureModel');
-         $postInfo['posts'] = $this->VentureModel->one_post($arg);
-         $this->load->view('showOnepage', $postInfo);
-     }
+    public function onePost($arg)
+    {
+        $this->load->model('VentureModel');
+        $postInfo['posts'] = $this->VentureModel->one_post($arg);
+        $this->load->view('showOnepage', $postInfo);
+    }
 
     //  public function showPost()
     //  {
@@ -158,8 +240,8 @@ class Process extends CI_Controller
     //     die($query);
 	// 	$this->load->view('editPostPage', $query);
     //  }
-     public function editPostShow($arg)//show the post inside the form, ready to be edited
-     {
+    public function editPostShow($arg)//show the post inside the form, ready to be edited
+    {
 		$this->load->model('VentureModel');
         $query['showIt'] = $this->VentureModel->show_post($arg);
         // var_dump($id);
@@ -205,15 +287,20 @@ class Process extends CI_Controller
         $this->VentureModel->delete_user($id);
         $this->session->sess_destroy();
         $this->session->set_userdata($user1 = null);
-        $this->load->view('homepage');	
+        $jobs['listjobs'] = $this->VentureModel->home_page_list();
+        $this->load->view('homepage', $jobs);
     } 
 
      public function logout()
     {
          $this->session->sess_destroy();
          $this->session->set_userdata($user1 = null);
-         $this->load->view('homepage');
+        $this->load->model('VentureModel');
+        $jobs['listjobs'] = $this->VentureModel->home_page_list();
+        $this->load->view('homepage', $jobs);
     }
+
+    
 }
 
 

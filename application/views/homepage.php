@@ -1,5 +1,10 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');?>
+defined('BASEPATH') or exit('No direct script access allowed');
+// echo "<pre>";
+// var_dump($listjobs);
+// echo "</pre>";
+// die();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -172,7 +177,9 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
                 if (null !== $this->session->userdata('is_logged_in')) { ?>
                     <a href="/editPostShow/<?= $this->session->userdata['id'] ?>"><button class="btn btn-outline-secondary">Account</button></a> 
                     <a href="/logout"><button class="btn btn-outline-secondary">Logout</button></a>
-                <?php } ?>
+                    <?php if($this->session->userdata('rank_id') < 2){?>
+                        <a href="/adminpanel"><button class="btn btn-outline-secondary">Admin Panel</button></a>
+                    <?php }} ?>
                 
             </div>
         </header>
@@ -190,8 +197,8 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 			    <div class="col-md-12 col-md-offset-2 text-center">
                     <h1>Recently Added</h1>
                     <?php if (isset($listjobs)) {
-                        for ($i=0; $i < 5; $i++) {  ?>
-                        <strong><a href="onepost/<?= $listjobs[$i]['id']?>"><?= $listjobs[$i]['title']?></a></strong>
+                        foreach($listjobs as $var) { ?>
+                        <strong><a href="onepost/<?= $var['id']?>"><?= $var['title']?></a></strong>
                         <br>
                         <br>
                     <?php }} ?>

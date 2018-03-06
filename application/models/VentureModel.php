@@ -24,7 +24,17 @@ class VentureModel extends CI_Model
 
     public function home_page_list()
     {
-        return $this->db->query("SELECT * FROM posts WHERE verify = 1 ORDER BY created_at DESC;")->result_array();
+        return $this->db->query("SELECT * FROM posts WHERE verify = 1 ORDER BY created_at DESC LIMIT 5;")->result_array();
+    }
+
+    public function show_page_list()
+    {
+        return $this->db->query("SELECT posts.id, posts.title, posts.post, posts.created_at, posts.verify, users.comp_name
+                                FROM posts
+                                LEFT JOIN users
+                                ON posts.users_id = users.id
+                                WHERE  verify = 1 
+                                ORDER BY created_at DESC;")->result_array();
     }
     
     public function show_post($arg)
@@ -64,6 +74,44 @@ class VentureModel extends CI_Model
         $query2 = "DELETE FROM users WHERE id = $id";
         $this->db->query($query);
         $this->db->query($query2);
+    }
+
+    public function admin_take_users_for_verify()
+    {
+        return $this->db->query("SELECT * FROM users WHERE rank_id = 3")->result_array();
+    }
+
+    public function admin_take_users()
+    {
+        return $this->db->query("SELECT * FROM users")->result_array();
+    }
+
+    public function admin_verify_user($id)
+    {
+        $this->db->query("UPDATE users SET rank_id = 2 WHERE id = $id;");
+    }
+
+    public function admin_delete_user($id)
+    {
+        $this->db->query("DELETE FROM users WHERE id = $id;");
+    }
+
+    public function admin_take_posts()
+    {
+        return $this->db->query("SELECT * FROM posts")->result_array();
+    }
+    public function admin_take_posts_for_verify()
+    {
+        return $this->db->query("SELECT posts.id, posts.title, posts.post, posts.created_at, posts.verify, users.comp_name FROM posts LEFT JOIN users ON posts.users_id = users.id WHERE verify = 0 ORDER BY created_at DESC")->result_array();
+    }
+
+    public function admin_verify_post($id)
+    {
+        $this->db->query( "UPDATE posts SET verify = 1 WHERE id = $id;");
+    }
+    public function admin_delete_post($id)
+    {
+        $this->db->query( "DELETE FROM posts WHERE id = $id;");
     }
 }
 ?>

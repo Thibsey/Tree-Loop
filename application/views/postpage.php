@@ -135,7 +135,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <?php if (null !== $this->session->userdata('is_logged_in')) { ?>
                 <a href="/editPostShow/<?= $this->session->userdata['id'] ?>"><button class="btn btn-outline-secondary">Account</button></a> 
                 <a href="/logout"><button class="btn btn-outline-secondary">Logout</button></a>
-            <?php } ?>
+                <?php if ($this->session->userdata('rank_id') < 2) { ?>
+                        <a href="/adminpanel"><button class="btn btn-outline-secondary">Admin Panel</button></a>
+            <?php }} ?>
             </div>
 	</header>
     <hr>
