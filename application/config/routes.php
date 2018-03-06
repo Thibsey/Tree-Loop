@@ -14,6 +14,7 @@ $route['postjob'] = 'process/postjob';
 $route['onepost/(:any)'] = 'process/onePost/$1';
 $route['editPost/(:any)'] = 'process/editPost/$1';
 $route['editPostShow/(:any)'] = 'process/editPostShow/$1';
+$route['addOneTitle/(:any)'] = 'process/addOneTitle/$1';
 $route['deletePage'] = 'process/deletePage';
 $route['delete/(:any)'] = 'process/deletePost/$1';
 $route['deleteUser/(:any)'] = 'process/deleteUser/$1';
