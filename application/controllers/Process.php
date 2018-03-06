@@ -9,6 +9,12 @@ class Process extends CI_Controller
         $jobs['listjobs'] = $this->VentureModel->home_page_list();
         $this->load->view('homepage', $jobs);
     }
+
+    public function showpage()
+    {
+        $this->load->view('showpage');
+    }
+
     public function register()
     {
         $this->form_validation->set_rules('userName', 'Username', 'required|alpha');

@@ -100,6 +100,7 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
         width: 100%;
         position: relative;
         background: #262626;
+        padding-top:50px;
         }
         #fh5co-page {
         position: relative;
@@ -134,7 +135,10 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
             padding-top:40px;
             padding-right:350px;
         }
-        #mainpic{
+      
+        #footerone{
+          display:inline-block;
+          padding-right:800px;
         
         }
         #footerone{
@@ -184,6 +188,10 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
                     <br>
                     <br>
            <?php }} ?>
+           <a href="showpage"><button type="button" class="btn btn-secondary">see more</button></a>
+           <a href="postpage"><button type="button" class="btn btn-secondary">post a job</button></a>
+
+
 			</div>
 		</div>
 	</div>
