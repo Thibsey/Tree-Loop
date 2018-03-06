@@ -171,6 +171,15 @@ class Process extends CI_Controller
 		$this->VentureModel->edit_item($arg, $editInfo);
 		$this->load->view('editPostPage');
     } 
+
+    public function addOneTitle($id)
+	{
+    	$this->load->model('VentureModel');
+        $query['titles'] = $this->VentureModel->addOneTitle($id);
+        // var_dump($query);
+        // die();
+    	$this->load->view('showpage', $query);
+	}
     
     public function deletePost($id)
     {

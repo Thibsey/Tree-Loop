@@ -227,7 +227,7 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
         <a href="#"> Credo </a>&nbsp;&nbsp;&nbsp;
         <a href="#"> Support </a>&nbsp;&nbsp;&nbsp;
         <a href="#"> Contact </a>
-      </div>
+      < /div>
       <div id="footertow">
           <a href="#" class="fa fa-facebook"></a>&nbsp;&nbsp;&nbsp;
           <a href="#" class="fa fa-twitter"></a>&nbsp;&nbsp;&nbsp;

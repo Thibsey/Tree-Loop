@@ -40,6 +40,17 @@ class VentureModel extends CI_Model
 		$values = [$arg['title'], $arg['post'], $arg['company_url']];
         $this->db->query($query, $values);
     }
+
+    public function addOneTitle($id) 
+	{
+		$query = "SELECT id, title FROM posts ORDER BY id DESC";
+
+		$listTitle = $this->db->query($query)->result_array($id);
+		// var_dump($query);
+		// die();
+		
+		return $listTitle;
+	}
     
     public function delete_post($id)
     {

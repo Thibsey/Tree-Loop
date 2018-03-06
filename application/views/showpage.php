@@ -154,6 +154,27 @@ letter-spacing: 1px;
     
         <a href="/register"><button>Register</button></a> 
 
+        <div class="titles">
+            <br>
+            <br>
+
+			<h2>Some Awesome Job Offers</h2>
+			<div action="/addOneTitle/" method="POST">
+
+				<?php
+
+					foreach ($titles as $var) {
+				?>
+				<ul>
+					<a href= <?= "'/onepost/".$var['id']."'";?>><?= $var['title']?></a>
+				
+				</ul>
+				<?php } ?>
+
+			</div>
+
+        </div>
+
         <div class="container">
         </div>
 
