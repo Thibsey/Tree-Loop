@@ -103,6 +103,11 @@ class Process extends CI_Controller
         $this->load->view('postpage');
 
     }
+    public function adminpanal()
+    {
+        $this->load->view('adminpanal');
+
+    }
 
     public function postjob()
     {

@@ -9,6 +9,7 @@ $route['register'] = 'process/register';
 $route['login'] = 'process/login';
 $route['postpage'] = 'process/postpage';
 $route['showpage'] = 'process/showpage';
+$route['adminpanal'] = 'process/adminpanal';
 $route['postjob'] = 'process/postjob';
 $route['onepost/(:any)'] = 'process/onePost/$1';
 $route['editPost/(:any)'] = 'process/editPost/$1';
