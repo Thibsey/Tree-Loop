@@ -191,6 +191,7 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
            <?php }} ?>
            <a href="showpage"><button type="button" class="btn btn-secondary">see more</button></a>
            <a href="postpage"><button type="button" class="btn btn-secondary">post a job</button></a>
+           <a href="adminpanal"><button type="button" class="btn btn-secondary">admin panal</button></a>
 
 
 			</div>
