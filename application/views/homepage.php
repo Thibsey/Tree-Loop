@@ -155,100 +155,93 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 </head>
 <body>	
 	<div >
-	<header>
-		<div  id="headerpic">
-			<a href="http://localhost"><img src="https://i.imgur.com/M6JQeoM.png"></a>
-        </div class="buttonclass">
-        <div id="headernav">
-            <button type="button" class="btn btn-outline-secondary">thuersday gathering</button>
-            <button type="button" class="btn btn-outline-secondary">international</button>
-            <button type="button" class="btn btn-outline-secondary">community</button>
-            <button type="button" class="btn btn-outline-secondary">about us</button>
-            <button type="button" class="btn btn-outline-secondary">contact us</button>
-            <a href="login"><button type="button" class="btn btn-outline-secondary">login-register</button></a>
-            
-		</div>
-		
-	</header>
-	<div id="fh5co-intro-section">
-		<div class="firstpic">
-			<div class="col-md-12 col-md-offset-2 text-center" id="idcenter">
-                <br><br><br><br><br><br><br>
-				<p>Connecting innovators to make things happen Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community! Connecting innovators to make things happen Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
-                <a href="#">learn more</a>
-			</div>
-		</div>	
+        <header>
+            <div  id="headerpic">
+                <a href="http://localhost"><img src="https://i.imgur.com/M6JQeoM.png"></a>
+            </div class="buttonclass">
+            <div id="headernav">
+                <button type="button" class="btn btn-outline-secondary">thuersday gathering</button>
+                <button type="button" class="btn btn-outline-secondary">international</button>
+                <button type="button" class="btn btn-outline-secondary">community</button>
+                <button type="button" class="btn btn-outline-secondary">about us</button>
+                <button type="button" class="btn btn-outline-secondary">contact us</button>
+                <?php if (null === $this->session->userdata('is_logged_in')) { ?>
+                <a href="register"><button type="button" class="btn btn-outline-secondary">login-register</button></a>
+                <?php } ?>
+                <?php 
+                if (null !== $this->session->userdata('is_logged_in')) { ?>
+                    <a href="/editPostShow/<?= $this->session->userdata['id'] ?>"><button class="btn btn-outline-secondary">Account</button></a> 
+                    <a href="/logout"><button class="btn btn-outline-secondary">Logout</button></a>
+                <?php } ?>
+                
+            </div>
+        </header>
+        <div id="fh5co-intro-section">
+            <div class="firstpic">
+                <div class="col-md-12 col-md-offset-2 text-center" id="idcenter">
+                    <br><br><br><br><br><br><br>
+                    <p>Connecting innovators to make things happen Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community! Connecting innovators to make things happen Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
+                    <a href="#">learn more</a>
+                </div>
+            </div>
+        </div>
+        <div id="fh5co-intro-section">
+		    <div>
+			    <div class="col-md-12 col-md-offset-2 text-center">
+                    <h1>Recently Added</h1>
+                    <?php if (isset($listjobs)) {
+                        for ($i=0; $i < 5; $i++) {  ?>
+                        <strong><a href="onepost/<?= $listjobs[$i]['id']?>"><?= $listjobs[$i]['title']?></a></strong>
+                        <br>
+                        <br>
+                    <?php }} ?>
+                    <a href="showpage"><button type="button" class="btn btn-secondary">see more</button></a>
+                    <?php 
+                    if (null !== $this->session->userdata('is_logged_in')) { ?>
+                    <a href="/postpage"><button type="button" class="btn btn-secondary">Post Job Offer</button></a>
+                    <?php } ?>
+			        </div>
+		        </div>
+	        </div>
+            <div id="fh5co-intro-section" class="col-md-12">
+                <table>
+                    <tr>
+                    <td>
+                    <div class="col-md-10 col-md-offset-2 text-center" id="mainpic">
+                        <img src="https://i.imgur.com/M6JQeoM.png" alt="" align="bottom">
+                        <p>Connecting innovators to make things happen Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
+                    </div>
+                    </td>
+                    <td>
+                    <div class="col-md-10 col-md-offset-2 text-center" >
+                        <img src="https://i.imgur.com/M6JQeoM.png" alt="">
+                        <p>Connecting innovators to make things happen Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
+                    </div>
+                    </td>
+                    <td>
+                    <div class="col-md-10 col-md-offset-2 text-center" >
+                        <img src="https://i.imgur.com/M6JQeoM.png" alt="">
+                        <p>Connecting innovators to make things happen Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
+                    </div>
+                    </td>
+                    </tr>
+                </table>        
+	        </div>
+	    </div>
+        <footer id="fh5co-footer" role="contentinfo">
+            <div id="footerone">
+                <a href="#"> Credo </a>&nbsp;&nbsp;&nbsp;
+                <a href="#"> Support </a>&nbsp;&nbsp;&nbsp;
+                <a href="#"> Contact </a>
+            </div>
+            <div id="footertow">
+                <a href="#" class="fa fa-facebook"></a>&nbsp;&nbsp;&nbsp;
+                <a href="#" class="fa fa-twitter"></a>&nbsp;&nbsp;&nbsp;
+                <a href="#" class="fa fa-linkedin"></a>&nbsp;&nbsp;&nbsp;
+                <a href="#" class="fa fa-instagram"></a>
+                
+            </div>
+        </footer>
 	</div>
-    <div id="fh5co-intro-section">
-		<div>
-			<div class="col-md-12 col-md-offset-2 text-center">
-				<h1>Recently Added</h1>
-                <?php if (isset($listjobs)) {
-                    for ($i=0; $i < 5; $i++) {  ?>
-                    <strong><a href="onepost/<?= $listjobs[$i]['id']?>"><?= $listjobs[$i]['title']?></a></strong>
-                    <br>
-                    <br>
-           <?php }} ?>
-           <a href="showpage"><button type="button" class="btn btn-secondary">see more</button></a>
-           <a href="postpage"><button type="button" class="btn btn-secondary">post a job</button></a>
-
-
-			</div>
-		</div>
-	</div>
-    <div id="fh5co-intro-section" class="col-md-12">
-		<table>
-        <tr>
-        <td>
-			<div class="col-md-10 col-md-offset-2 text-center" id="mainpic">
-                <img src="https://i.imgur.com/M6JQeoM.png" alt="" align="bottom">
-                <p>Connecting innovators to make things happen Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
-			</div>
-            </td>
-            <td>
-            <div class="col-md-10 col-md-offset-2 text-center" >
-                <img src="https://i.imgur.com/M6JQeoM.png" alt="">
-                <p>Connecting innovators to make things happen Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
-			</div>
-            </td>
-            <td>
-            <div class="col-md-10 col-md-offset-2 text-center" >
-                <img src="https://i.imgur.com/M6JQeoM.png" alt="">
-                <p>Connecting innovators to make things happen Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
-			</div>
-            </td>
-            </tr>
-        </table>        
-	</div>
-	</div>
-	
-    <footer id="fh5co-footer" role="contentinfo">
-      <div id="footerone">
-        <a href="#"> Credo </a>&nbsp;&nbsp;&nbsp;
-        <a href="#"> Support </a>&nbsp;&nbsp;&nbsp;
-        <a href="#"> Contact </a>
-      </div>
-      <div id="footertow">
-          <a href="#" class="fa fa-facebook"></a>&nbsp;&nbsp;&nbsp;
-          <a href="#" class="fa fa-twitter"></a>&nbsp;&nbsp;&nbsp;
-          <a href="#" class="fa fa-linkedin"></a>&nbsp;&nbsp;&nbsp;
-          <a href="#" class="fa fa-instagram"></a>
-          
-      </div>
-    </footer>
-	</div>
-    <h1>We are inside Home Page</h1>
-   
-    <a href="/register"><button>Register</button></a> 
-    <br>
-    <br>
-    <a href="/postpage"><button>Post Job</button></a> 
-    <br>
-    <br>
-    <?php if(null !== $this->session->userdata('id')){ ?>
-    <a href="/editPostShow/<?= $this->session->userdata['id'] ?>"><button>Edit Job Post</button></a> 
-    <?php } ?>
-
-
 </body>
 </html>

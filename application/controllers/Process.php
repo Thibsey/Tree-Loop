@@ -57,7 +57,8 @@ class Process extends CI_Controller
             $add_user = $this->VentureModel->add_user($query);
             if ($add_user) 
             {
-                $this->load->view('index');
+                $message['success'] = "You have been registered";
+                $this->load->view('login_register', $message);
             } 
             else 
             {
@@ -85,7 +86,7 @@ class Process extends CI_Controller
                 $user1 = array(
                     'id' => $user['id'],
                     'email' => $user['email'],
-                    'rank_id' => $user['user_name'],
+                    'rank_id' => $user['rank_id'],
                     'is_logged_in' => true
                 );
                 $this->session->set_userdata($user1);

@@ -1,5 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+// $a = $this->session->userdata('rank_id');
+// echo "<pre>";
+// var_dump($a);
+// echo "</pre>";
+// die();
 ?>
 <!DOCTYPE html>
 <html>
@@ -92,7 +97,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <body>
 <header>
 		<div  id="headerpic">
-			<img src="https://i.imgur.com/M6JQeoM.png">
+			<a href="/index"><img src="https://i.imgur.com/M6JQeoM.png"></a>
     </div class="buttonclass">
     <div id="headernav">
             <button type="button" class="btn btn-outline-secondary">thuersday gathering</button>
@@ -100,8 +105,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <button type="button" class="btn btn-outline-secondary">community</button>
             <button type="button" class="btn btn-outline-secondary">about us</button>
             <button type="button" class="btn btn-outline-secondary">contact us</button>
+            <?php if (null === $this->session->userdata('is_logged_in')) { ?>
             <a href="register"><button type="button" class="btn btn-outline-secondary">login-register</button></a>
-            
+            <?php } ?>
+            <?php 
+            if (null !== $this->session->userdata('is_logged_in')) { ?>
+                <a href="/editPostShow/<?= $this->session->userdata['id'] ?>"><button class="btn btn-outline-secondary">Account</button></a> 
+                <a href="/logout"><button class="btn btn-outline-secondary">Logout</button></a> 
+            <?php } ?>
 		</div>
 		<hr>
 		
@@ -109,17 +120,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<table>
         <div class="logout_button">
 
-            <?php 
-                if(null !== $this->session->userdata('is_logged_in')){ ?>
-                <a href="/logout"><button>Logout</button></a> 
-                <?php } ?>
+            
         </div>
+                    <?php if (isset($error)){
+                            echo $error; }?>
         <tr>
             <td id="registerid">
                 <div class="register">
                     <h2>Register</h2>
-                    <?php if (isset($error)){
-                            echo $error; }?>
                     <form action="register" method="POST">
                         <input type="text" class="form-control" name="userName" placeholder="User Name">
                             
@@ -151,8 +159,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <td id="loginid">
                 <div class="login">
                     <h2>Login</h2>
-                    <?php if(isset($logerror))
-                    { echo $logerror; } ?>
                     <form action="login" method="POST">
                         <input type="text" class="form-control" name="email-login" placeholder="Email">
                         <br>
@@ -165,6 +171,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </div>
             </td>	
         </tr>
+        <?php if(isset($logerror))
+        { echo $logerror; } ?>
 	</table>
 	<footer id="fh5co-footer" role="contentinfo">
 		<div id="footerone">

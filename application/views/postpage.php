@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Venture Café</title>
@@ -120,7 +120,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <body>
     <header>
 		<div  id="headerpic">
-			<a href="http://localhost"><img src="https://i.imgur.com/M6JQeoM.png"></a>
+			<a href="/index"><img src="https://i.imgur.com/M6JQeoM.png"></a>
         </div class="buttonclass">
         <div id="headernav">
             <button type="button" class="btn btn-outline-secondary">thuersday gathering</button>
@@ -129,23 +129,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <button type="button" class="btn btn-outline-secondary">about us</button>
             <button type="button" class="btn btn-outline-secondary">contact us</button>
             <a href="login"><button type="button" class="btn btn-outline-secondary">login-register</button></a>
-            </div>    
+            <?php if (null === $this->session->userdata('is_logged_in')) { ?>
+            <a href="register"><button type="button" class="btn btn-outline-secondary">login-register</button></a>
+            <?php  } ?>
+            <?php if (null !== $this->session->userdata('is_logged_in')) { ?>
+                <a href="/editPostShow/<?= $this->session->userdata['id'] ?>"><button class="btn btn-outline-secondary">Account</button></a> 
+                <a href="/logout"><button class="btn btn-outline-secondary">Logout</button></a>
+            <?php } ?>
+            </div>
 	</header>
     <hr>
-    <div class="logout_button">
-
-		<?php 
-			if(null !== $this->session->userdata('is_logged_in')){ ?>
-			<a href="/logout"><button>Logout</button></a> 
-			<?php } ?>
-	</div>
-    <a href="/register"><button>Register</button></a> 
         <h1>Post a Job Offer</h1>
 
-             <?php 
-				if (isset($errors)) {
-		    	echo $errors; }
-			?>
+             <?php if (isset($errors)) {echo $errors; }?>
 
         <div id="postid">
             <form action="/postjob" method="POST">
