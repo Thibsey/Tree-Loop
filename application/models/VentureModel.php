@@ -12,6 +12,12 @@ class VentureModel extends CI_Model
     {
         return $this->db->query("SELECT * FROM users WHERE email = ?", array($email))->row_array();
     }
+
+    public function get_user_by_id($id)
+    {
+        return $this->db->query("SELECT * FROM users WHERE id = ?", array($id))->row_array();
+    }
+
     public function insertJob($postInfo, $tagInfo1, $tagInfo2, $tagInfo3) 
 	{
         $this->db->insert('posts', $postInfo);
@@ -33,6 +39,13 @@ class VentureModel extends CI_Model
     public function home_page_list()
     {
         return $this->db->query("SELECT * FROM posts WHERE verify = 1 ORDER BY created_at DESC LIMIT 5;")->result_array();
+    }
+
+    public function admin_edit_user($id, $arg)
+    {
+        $query = "UPDATE users SET comp_name = ?, comp_identify = ?, email = ?, password = ?, salt_data = ?, contact_address = ?, contact_pho_num = ? WHERE id = $id";
+		$values = [$arg['comp_name'], $arg['comp_identify'], $arg['email'], $arg['password'], $arg['salt_data'], $arg['contact_address'], $arg['contact_pho_num']];
+        $this->db->query($query, $values);
     }
 
     public function show_page_list()
