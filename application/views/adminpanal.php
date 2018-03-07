@@ -235,7 +235,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 foreach ($users as $user) { ?>
                                     <h5><strong>Company Name: &nbsp; </strong><?= $user['comp_name'] ?></h5>
                                     <a href="//<?= $user['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
-                                    <a href="//<?= $user['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a>
+                                    <a href="/adminEditPostPage/<?= $user['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a>
                                     <form action="" method="POST">
                                         <select name="rank">
                                             <option value="0">Super Admin</option>
@@ -251,7 +251,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 foreach ($usersna as $userna) { ?>
                                     <h5><strong>Company Name: &nbsp; </strong><?= $userna['comp_name'] ?></h5>
                                     <a href="//<?= $userna['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
-                                    <a href="//<?= $userna['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a>
+                                    <a href="/adminEditPostPage/<?= $userna['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a>
                                     <br><br>
                             <?php  }} else { ?>
                             <h1><strong>No users to Manage.</strong></h1>

@@ -211,6 +211,52 @@ class Process extends CI_Controller
         }
         
     }
+    public function adminEditPost($arg)
+	{
+        if ($this->session->userdata('rank_id)')< 2){
+            $this->load->model('VentureModel');
+            $companyIdentify = $this->input->post('comp_identify', true);
+            $companyName = $this->input->post('comp_name', true);
+            $email = $this->input->post('email', true);
+            $password = $this->input->post('password', true);
+            $salt = bin2hex(openssl_random_pseudo_bytes(22));
+            $encrypted_password = sha1($password . '' . $salt);
+            $contactAddress = $this->input->post('contact_address', true);
+            $contactPhoneNumber = $this->input->post('contact_pho_num', true);
+        
+            $query = array(
+                'comp_identify' => $companyIdentify,
+                'comp_name' => $companyName,
+                'email' => $email,
+                'password' => $encrypted_password,
+                'salt_data' => $salt,
+                'contact_address' => $contactAddress,
+                'contact_pho_num' => $contactPhoneNumber
+            );
+            $this->VentureModel->admin_edit_user($arg, $query);
+            $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
+            $data['users'] = $this->VentureModel->admin_take_users();
+            $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
+            $data['posts'] = $this->VentureModel->admin_take_posts();
+            $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $this->load->view('adminpanal', $data);
+        } else {
+            $this->load->model('VentureModel');
+            $jobs['listjobs'] = $this->VentureModel->home_page_list();
+            $jobs['highlight'] = $this->VentureModel->highlight();
+            $this->load->view('homepage', $jobs);
+        }
+    } 
+    
+    public function adminEditPostPage($id)
+    {
+        if ($this->session->userdata('rank_id)')< 2){
+            $this->load->model('VentureModel');
+            $user['user_edit'] = $this->VentureModel->get_user_by_id($id);
+            $this->load->view('adminUserEdit', $user);
+        }
+        
+    }
 
     public function postjob()
     {
@@ -292,8 +338,6 @@ class Process extends CI_Controller
         // die();
         $this->load->view('showpage', $query);
     }
-    
-    
     
     public function deletePost($id)
     {
