@@ -136,7 +136,7 @@ class Process extends CI_Controller
 
     public function adminVerifyPost($id)
     {
-        if ($this->session->userdata('id') < 2) {
+        if ($this->session->userdata('rank_id') < 2) {
             $this->load->model('VentureModel');
             $this->VentureModel->admin_verify_post($id);
             $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
@@ -156,7 +156,7 @@ class Process extends CI_Controller
 
     public function adminDeletePost($id)
     {
-        if ($this->session->userdata('id') < 2) {
+        if ($this->session->userdata('rank_id') < 2) {
             $this->load->model('VentureModel');
             $this->VentureModel->admin_delete_post($id);
             $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
@@ -175,7 +175,7 @@ class Process extends CI_Controller
 
     public function adminVerifyUser($id)
     {
-        if ($this->session->userdata('id') < 2) {
+        if ($this->session->userdata('rank_id') < 2) {
             $this->load->model('VentureModel');
             $this->VentureModel->admin_verify_user($id);
             $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
@@ -194,7 +194,7 @@ class Process extends CI_Controller
     }
     public function adminDeleteUser($id)
     {
-        if ($this->session->userdata('id') < 2) {
+        if ($this->session->userdata('rank_id') < 2) {
             $this->load->model('VentureModel');
             $this->VentureModel->admin_delete_user($id);
             $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
@@ -210,6 +210,44 @@ class Process extends CI_Controller
             $this->load->view('homepage', $jobs);
         }
         
+    }
+
+    public function superAdminRankUpdate($id)
+    {
+        if ($this->session->userdata('rank_id') == 0) {
+            $this->load->model('VentureModel');
+            $rank_id = $this->input->post('rank-update', true);
+            $this->VentureModel->superAdmin_update_user_rank($id, $rank_id);
+            $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
+            $data['users'] = $this->VentureModel->admin_take_users();
+            $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
+            $data['posts'] = $this->VentureModel->admin_take_posts();
+            $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $this->load->view('adminpanal', $data);
+        } else {
+            $this->load->model('VentureModel');
+            $jobs['listjobs'] = $this->VentureModel->home_page_list();
+            $jobs['highlight'] = $this->VentureModel->highlight();
+            $this->load->view('homepage', $jobs);
+        }
+    }
+    public function superAdminDeleteUser($id)
+    {
+        if ($this->session->userdata('rank_id') == 0) {
+            $this->load->model('VentureModel');
+            $this->VentureModel->admin_delete_user($id);
+            $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
+            $data['users'] = $this->VentureModel->admin_take_users();
+            $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
+            $data['posts'] = $this->VentureModel->admin_take_posts();
+            $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $this->load->view('adminpanal', $data);
+        } else {
+            $this->load->model('VentureModel');
+            $jobs['listjobs'] = $this->VentureModel->home_page_list();
+            $jobs['highlight'] = $this->VentureModel->highlight();
+            $this->load->view('homepage', $jobs);
+        }
     }
 
     public function postjob()

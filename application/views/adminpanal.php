@@ -1,5 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+$password_login = "7654321";
+$user = "c9ad68e184ffa7fc580dbe5823855538a5e6c8b096b5";
+$encrypted_password = sha1($password_login . '' . $user);
+echo $encrypted_password;
+die();
 ?>
 <!DOCTYPE html>
 <html>
@@ -234,10 +239,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             if (isset($users)) {
                                 foreach ($users as $user) { ?>
                                     <h5><strong>Company Name: &nbsp; </strong><?= $user['comp_name'] ?></h5>
-                                    <a href="//<?= $user['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
+                                    <a href="/superadmin-delete-user/<?= $user['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
                                     <a href="//<?= $user['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a>
-                                    <form action="" method="POST">
-                                        <select name="rank">
+                                    <form action="/superadmin-rank-update/<?=$user['id']?>" method="POST">
+                                        <select name="rank-update">
                                             <option value="0">Super Admin</option>
                                             <option value="1">Admin</option>
                                             <option value="2">Users</option>
@@ -250,7 +255,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <?php if (isset($usersna)) {
                                 foreach ($usersna as $userna) { ?>
                                     <h5><strong>Company Name: &nbsp; </strong><?= $userna['comp_name'] ?></h5>
-                                    <a href="//<?= $userna['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
+                                    <a href="/superadmin-delete-user/<?= $userna['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
                                     <a href="//<?= $userna['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a>
                                     <br><br>
                             <?php  }} else { ?>
