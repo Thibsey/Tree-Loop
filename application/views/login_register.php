@@ -62,7 +62,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         }
         #headernav {
             display:inline-block;
-            padding-top:0px;
+            padding-top:50px;
             padding-right:0px;
         }
         #headerpic{
@@ -96,9 +96,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </head>
 <body>
 <header>
+<table>
+<tr>
+<td>
 		<div  id="headerpic">
 			<a href="/index"><img src="https://i.imgur.com/M6JQeoM.png"></a>
     </div class="buttonclass">
+    </td><td>
     <div id="headernav">
             <button type="button" class="btn btn-outline-secondary">thuersday gathering</button>
             <button type="button" class="btn btn-outline-secondary">international</button>
@@ -119,9 +123,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 }
             } ?>
 		</div>
-		<hr>
-		
+        </td>
+        </tr>
+        </table>
 	</header>
+    <hr>
 	<table>
         <div class="logout_button">
 
