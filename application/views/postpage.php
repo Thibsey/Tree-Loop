@@ -92,16 +92,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
             background: #262626;
             padding-top:50px;
             }
-        #headernav {
-            display:inline-block;
-            padding-top:0px;
-            padding-right:0px;
-        }
-        #headerpic{
-            display:inline-block;
-            padding-top:40px;
-            padding-right:350px;
-        }
+            #headernav {
+                display:inline-block;
+                padding-top:50px;
+                padding-right:0px;
+            }
+            #headerpic{
+                display:inline-block;
+                padding-top:40px;
+                padding-right:350px;
+            }
         #footerone{
             display:inline-block;
             padding-right:800px;
@@ -119,9 +119,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </head>
 <body>
     <header>
+    <table>
+    <tr>
+    <td>
 		<div  id="headerpic">
 			<a href="/index"><img src="https://i.imgur.com/M6JQeoM.png"></a>
         </div class="buttonclass">
+        </td><td>
         <div id="headernav">
             <button type="button" class="btn btn-outline-secondary">thuersday gathering</button>
             <button type="button" class="btn btn-outline-secondary">international</button>
@@ -139,6 +143,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <a href="/adminpanel"><button class="btn btn-outline-secondary">Admin Panel</button></a>
             <?php }} ?>
             </div>
+            </td>
+            </tr>
+            </table>
 	</header>
     <hr>
         <h1>Post a Job Offer</h1>

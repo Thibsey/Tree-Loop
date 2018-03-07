@@ -136,9 +136,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             padding-top:40px;
             padding-right:350px;
         }
-        #mainpic{
         
-        }
         #footerone{
         display:inline-block;
         padding-right:800px;
