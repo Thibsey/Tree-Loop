@@ -1,10 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-$password_login = "7654321";
-$user = "c9ad68e184ffa7fc580dbe5823855538a5e6c8b096b5";
-$encrypted_password = sha1($password_login . '' . $user);
-echo $encrypted_password;
-die();
 ?>
 <!DOCTYPE html>
 <html>
