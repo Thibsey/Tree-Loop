@@ -118,9 +118,24 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
             height:2px;
             padding-top:10px;
         }
+        #iddelete{
+            margin-bottom:50px;
+            margin-top:50px;
+        }
         #textid{
             width:600px;
+            border-color:#FFFFFF;
         }
+        #textid2{
+            width:600px;
+            height:100px;
+            border-color:#FFFFFF;
+        }
+        #tdid{
+            padding-right:100px;
+        }
+        
+        
         
       
     </style>
@@ -136,7 +151,6 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
             </td><td>
             <div id="headernav">
                 <button type="button" class="btn btn-outline-secondary">thuersday gathering</button>
-                <button type="button" class="btn btn-outline-secondary">international</button>
                 <button type="button" class="btn btn-outline-secondary">community</button>
                 <button type="button" class="btn btn-outline-secondary">about us</button>
                 <button type="button" class="btn btn-outline-secondary">contact us</button>
@@ -154,24 +168,16 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
             </tr>
             </table>
         </header>
-        <hr>
+        <hr >
 
-        <div class="logout_button">
-
-            <?php 
-                if(null !== $this->session->userdata('is_logged_in')){ ?>
-                <a href="/logout"><button class="btn btn-outline-secondary">Logout</button></a> <br>
-        <br>
-            <?php } ?>
-        </div>
-        <a href="/register"><button class="btn btn-outline-secondary">Register</button></a> 
-        <br>
-        <br>
-        <a href="/postpage"><button class="btn btn-outline-secondary">Post Job</button></a> 
-        <br>
-        <br>
-
+        
         <h1>We are inside Edit/Delete Post &amp; Terminate account</h1>
+
+        <div id="mainid">
+
+        
+        
+
 
 
         <?php if(isset($showIt))
@@ -181,22 +187,29 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 			<input type="text" name="title" id="textid" value="<?= $var['title'] ?>" >
 			<br>
 			<br>
-			<input type="text" name="post" id="textid" value="<?= $var['post'] ?>">
+			<input type="text" name="post" id="textid2" value="<?= $var['post'] ?>">
 			<br>
 			<br>
 			<input type="text" name="company_url" id="textid" value="<?= $var['company_url'] ?>">
 			<br>
 			<br>
 			<input type="hidden" name="id" value="<?= $var['id'] ?>">
-			<br>
-            <input type="submit" value="UPDATE" name="submit">
-            <br>
-            <br>
-            <br>
+            
+            <center>
+        
+            <input type="submit" value="UPDATE"  class="btn btn-outline-secondary" id="tdid" name="submit">
+       
 		</form>
-        <a href="/delete/<?=$var['id']?>"><button>DELETE</button></a>
-        <br>
-        <br>
+            <a href="/delete/<?=$var['id']?>"><button id="tdid2" class="btn btn-outline-secondary">DELETE</button></a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+       
+        <!-- <hr> -->
+        </div>
     <?php }?>
 	<a href="/deletePage"><button class="btn btn-outline-secondary" id=
     "iddelete">DELETE ACCOUNT</button></a>

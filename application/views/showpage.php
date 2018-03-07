@@ -145,7 +145,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </td><td>
         <div id="headernav">
             <button type="button" class="btn btn-outline-secondary">thuersday gathering</button>
-            <button type="button" class="btn btn-outline-secondary">international</button>
             <button type="button" class="btn btn-outline-secondary">community</button>
             <button type="button" class="btn btn-outline-secondary">about us</button>
             <button type="button" class="btn btn-outline-secondary">contact us</button>

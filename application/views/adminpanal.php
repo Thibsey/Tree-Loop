@@ -92,16 +92,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
             background: #262626;
             padding-top:50px;
             }
-        #headernav {
-            display:inline-block;
-            padding-top:0px;
-            padding-right:0px;
-        }
-        #headerpic{
-            display:inline-block;
-            padding-top:40px;
-            padding-right:350px;
-        }
+            #headernav {
+                display:inline-block;
+                padding-top:50px;
+                padding-right:0px;
+            }
+            #headerpic{
+                display:inline-block;
+                padding-top:40px;
+                padding-right:350px;
+            }
         #footerone{
             display:inline-block;
             padding-right:800px;
@@ -135,16 +135,26 @@ defined('BASEPATH') or exit('No direct script access allowed');
             padding-top:100px;
             
         }
+        #buttonid{
+            padding-right:100px;
+        }
+        #overviewid{
+            padding-left:100px;
+        
+        }
     </style>
 </head>
 <body>
     <header>
+        <table>
+            <tr>
+                <td>
 		<div  id="headerpic">
 			<a href="http://localhost"><img src="https://i.imgur.com/M6JQeoM.png"></a>
         </div class="buttonclass">
+    </td><td>
         <div id="headernav">
             <button type="button" class="btn btn-outline-secondary">thuersday gathering</button>
-            <button type="button" class="btn btn-outline-secondary">international</button>
             <button type="button" class="btn btn-outline-secondary">community</button>
             <button type="button" class="btn btn-outline-secondary">about us</button>
             <button type="button" class="btn btn-outline-secondary">contact us</button>
@@ -161,14 +171,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <?php 
                 }
             } ?>
-            </div>    
+            </div>  
+        </td>
+        </tr> 
+        </table> 
 	</header>
     <hr>
     <center>
         <div id="container">
             <table>
                 <tr>
-                <td>
+                <td id="buttonid">
 
                     <!-- TAB BUTTONS -->
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -179,7 +192,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <a class="nav-link btn btn-outline-secondary" id="v-pills-postmanage-tab" data-toggle="pill" href="#v-pills-postmanage" role="tab" aria-controls="v-pills-postmanage" aria-selected="false">Post Management</a><br>
                     </div>
                 </td>
-                <td>
+                <td id="overviewid">
                     <div class="tab-content" id="v-pills-tabContent">
 
                         <!-- ADMIN OVERVIEW  -->
