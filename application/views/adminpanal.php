@@ -247,10 +247,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             if (isset($users)) {
                                 foreach ($users as $user) { ?>
                                     <h5><strong>Company Name: &nbsp; </strong><?= $user['comp_name'] ?></h5>
-                                    <a href="//<?= $user['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
+                                    <a href="/superadmin-delete-user/<?= $user['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
                                     <a href="/adminEditPostPage/<?= $user['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a>
-                                    <form action="" method="POST">
-                                        <select name="rank">
+                                    <form action="/superadmin-rank-update/<?=$user['id']?>" method="POST">
+                                        <select name="rank-update">
                                             <option value="0">Super Admin</option>
                                             <option value="1">Admin</option>
                                             <option value="2">Users</option>
@@ -263,7 +263,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <?php if (isset($usersna)) {
                                 foreach ($usersna as $userna) { ?>
                                     <h5><strong>Company Name: &nbsp; </strong><?= $userna['comp_name'] ?></h5>
-                                    <a href="//<?= $userna['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
+                                    <a href="/superadmin-delete-user/<?= $userna['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
                                     <a href="/adminEditPostPage/<?= $userna['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a>
                                     <br><br>
                             <?php  }} else { ?>

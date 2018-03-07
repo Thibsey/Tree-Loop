@@ -25,5 +25,7 @@ $route['admin-verify-post/(:any)'] = 'process/adminVerifyPost/$1';
 $route['admin-delete-post/(:any)'] = 'process/adminDeletePost/$1';
 $route['admin-verify-user/(:any)'] = 'process/adminVerifyUser/$1';
 $route['admin-delete-user/(:any)'] = 'process/adminDeleteUser/$1';
+$route['superadmin-rank-update/(:any)'] = 'process/superAdminRankUpdate/$1';
+$route['superadmin-delete-user/(:any)'] = 'process/superAdminDeleteUser/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -147,6 +147,12 @@ class VentureModel extends CI_Model
         $this->db->query( "DELETE FROM posts WHERE id = $id;");
     }
 
+    public function superAdmin_update_user_rank($id, $update)
+    {
+        $query = "UPDATE users SET rank_id = $update WHERE id = $id";
+        $this->db->query($query);
+    }
+
     public function get_tags()
     {
         return $this->db->query("SELECT * FROM tags;")->result_array();
