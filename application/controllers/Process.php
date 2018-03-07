@@ -7,7 +7,15 @@ class Process extends CI_Controller
     {
         $this->load->model('VentureModel');
         $jobs['listjobs'] = $this->VentureModel->home_page_list();
+        $jobs['highlight'] = $this->VentureModel->highlight();
         $this->load->view('homepage', $jobs);
+    }
+
+    public function hightlight()
+    {
+        $this->load->model('VentureModel');
+        $highlight['highlight'] = $this->VentureModel->highlight();
+        $this->load->view('homepage', $highlight);
     }
 
     public function showpage()
@@ -121,6 +129,7 @@ class Process extends CI_Controller
         } else {
             $this->load->model('VentureModel');
             $jobs['listjobs'] = $this->VentureModel->home_page_list();
+            $jobs['highlight'] = $this->VentureModel->highlight();
             $this->load->view('homepage', $jobs);
         }
     }
@@ -139,6 +148,7 @@ class Process extends CI_Controller
         } else {
             $this->load->model('VentureModel');
             $jobs['listjobs'] = $this->VentureModel->home_page_list();
+            $jobs['highlight'] = $this->VentureModel->highlight();
             $this->load->view('homepage', $jobs);
         }
 
@@ -158,6 +168,7 @@ class Process extends CI_Controller
         } else {
             $this->load->model('VentureModel');
             $jobs['listjobs'] = $this->VentureModel->home_page_list();
+            $jobs['highlight'] = $this->VentureModel->highlight();
             $this->load->view('homepage', $jobs);
         }
     }
@@ -176,6 +187,7 @@ class Process extends CI_Controller
         } else {
             $this->load->model('VentureModel');
             $jobs['listjobs'] = $this->VentureModel->home_page_list();
+            $jobs['highlight'] = $this->VentureModel->highlight();
             $this->load->view('homepage', $jobs);
         }
         
@@ -194,6 +206,7 @@ class Process extends CI_Controller
         } else {
             $this->load->model('VentureModel');
             $jobs['listjobs'] = $this->VentureModel->home_page_list();
+            $jobs['highlight'] = $this->VentureModel->highlight();
             $this->load->view('homepage', $jobs);
         }
         
@@ -201,12 +214,11 @@ class Process extends CI_Controller
 
     public function postjob()
     {
-
         $t = $this->input->post(NULL, true);
-        echo "<pre>";
-        var_dump($t);
-        echo "</pre>";
-        die();
+        // echo "<pre>";
+        // var_dump($t);
+        // echo "</pre>";
+        // die();
         $this->form_validation->set_rules('title', 'Title', 'required');
         $this->form_validation->set_rules('description', 'Job Description', 'required');
         $this->form_validation->set_rules('company-url', 'Link to Original Offer', 'required|valid_url');
@@ -279,7 +291,9 @@ class Process extends CI_Controller
         // var_dump($query);
         // die();
         $this->load->view('showpage', $query);
-	}
+    }
+    
+    
     
     public function deletePost($id)
     {
@@ -300,6 +314,7 @@ class Process extends CI_Controller
         $this->session->sess_destroy();
         $this->session->set_userdata($user1 = null);
         $jobs['listjobs'] = $this->VentureModel->home_page_list();
+        $jobs['highlight'] = $this->VentureModel->highlight();
         $this->load->view('homepage', $jobs);
     } 
 
@@ -309,6 +324,7 @@ class Process extends CI_Controller
          $this->session->set_userdata($user1 = null);
         $this->load->model('VentureModel');
         $jobs['listjobs'] = $this->VentureModel->home_page_list();
+        $jobs['highlight'] = $this->VentureModel->highlight();
         $this->load->view('homepage', $jobs);
     }
 
