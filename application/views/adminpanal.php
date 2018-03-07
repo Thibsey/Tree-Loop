@@ -247,11 +247,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <?php  }} else { ?>
                             <h1><strong>No users to Manage.</strong></h1>
                             <?php }} else {?>
-                            <?php if (isset($users)) {
-                                foreach ($users as $user) { ?>
-                                    <h5><strong>Company Name: &nbsp; </strong><?= $user['comp_name'] ?></h5>
-                                    <a href="//<?= $user['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
-                                    <a href="//<?= $user['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a>
+                            <?php if (isset($usersna)) {
+                                foreach ($usersna as $userna) { ?>
+                                    <h5><strong>Company Name: &nbsp; </strong><?= $userna['comp_name'] ?></h5>
+                                    <a href="//<?= $userna['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
+                                    <a href="//<?= $userna['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a>
                                     <br><br>
                             <?php  }} else { ?>
                             <h1><strong>No users to Manage.</strong></h1>

@@ -83,7 +83,7 @@ class VentureModel extends CI_Model
 
     public function admin_take_users()
     {
-        return $this->db->query("SELECT * FROM users")->result_array();
+        return $this->db->query("SELECT * FROM users WHERE rank_id < 3")->result_array();
     }
 
     public function admin_take_users_non_admins()
@@ -117,6 +117,11 @@ class VentureModel extends CI_Model
     public function admin_delete_post($id)
     {
         $this->db->query( "DELETE FROM posts WHERE id = $id;");
+    }
+
+    public function get_tags()
+    {
+        return $this->db->query("SELECT * FROM tags;")->result_array();
     }
 }
 ?>

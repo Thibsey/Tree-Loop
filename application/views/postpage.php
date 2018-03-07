@@ -147,23 +147,45 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
         <div id="postid">
             <form action="/postjob" method="POST">
+                <i>Job Title &amp; Type of Company</i>
+                <br>
                 <input type="text" name="title" placeholder="Job Title">
-                
+                <select name="tags">
+                    <?php if (isset($tags)) { ?>
+                        <?php foreach ($tags as $option) { ?>
+                            <option value="<?= $option['id'] ?>"><?= $option['tag'] ?></option>
+                    <?php }} ?>
+                </select>
                 <br>
                 <br>
-                <textarea name="description" id="" placeholder="Job Description" rows="6" cols="60"></textarea>
+                <i>Company Logo:</i>
+                <br>
+                <input type="text" name="imgurl" placeholder="Img URL">
                 <br>
                 <br>
-                <input type="text" name="company-url" placeholder="Link to Original Offer" class="col-2 col-form-label">
+                <i>Job Description:</i>
+                <br>
+                <textarea name="description" id="" placeholder="500 Characters Max" rows="6" cols="60"></textarea>
+                <br>
+                <br>
+                <i>End Date:</i>
+                <br>
+                <input type="date" name="enddate" class="col-2 col-form-label">
+                <br>
+                <br>
+                <i>Language Requirement:</i>
+                <br>
+                <input type="text" name="lanreq" placeholder="" class="col-2 col-form-label">
+                <br>
+                <br>
+                <i>Original Job Offer:</i>
+                <br>
+                <input type="text" name="company-url" placeholder="Link to Offer" class="col-2 col-form-label">
                 <input type="hidden" name="verify" value="0">
                 <input type="hidden" name="id" value="<?= $this->session->userdata('id')?>">
-                <!-- <br>
-                <br>
-                <input type="text" name="contact" placeholder="Contact"> -->
                 <br>
                 <br>
                 <input type="submit" class="btn btn-secondary" value="Post">
-                
             </form>
         </div>
         <div id="fh5co-intro-section" class="col-md-12">

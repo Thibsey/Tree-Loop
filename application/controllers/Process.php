@@ -102,9 +102,12 @@ class Process extends CI_Controller
 
     public function postpage()
     {
-        $this->load->view('postpage');
+        $this->load->model('VentureModel');
+        $tag['tags'] = $this->VentureModel->get_tags();
+        $this->load->view('postpage', $tag);
 
     }
+
     public function adminpanel()
     {
         if ($this->session->userdata('rank_id') < 2) {
@@ -198,28 +201,40 @@ class Process extends CI_Controller
 
     public function postjob()
     {
-       $this->form_validation->set_rules('title', 'Title', 'required');
-       $this->form_validation->set_rules('description', 'Job Description', 'required');
-       $this->form_validation->set_rules('company-url', 'Link to Original Offer', 'required|valid_url');
-       
-       //  $this->form_validation->set_rules('contact', 'Contact', 'required');
-       
-       if ($this->form_validation->run() == false) 
-       {
+
+        $t = $this->input->post(NULL, true);
+        echo "<pre>";
+        var_dump($t);
+        echo "</pre>";
+        die();
+        $this->form_validation->set_rules('title', 'Title', 'required');
+        $this->form_validation->set_rules('description', 'Job Description', 'required');
+        $this->form_validation->set_rules('company-url', 'Link to Original Offer', 'required|valid_url');
+
+        if ($this->form_validation->run() == false) 
+        {
            $validationerror = validation_errors();
            $this->load->view('postpage', array('errors' => $validationerror));
         } 
         else
         {
             $title = $this->input->post('title', TRUE);
+            $tags = $this->input->post('tags', TRUE);
+            $imgURL = $this->input->post('imgurl', TRUE);
             $description = $this->input->post('description', TRUE);
+            $endDate = $this->input->post('enddate', TRUE);
+            $lanReq = $this->input->post('lanreq', TRUE);
             $companyUrl = $this->input->post('company-url', TRUE);
             $verify = $this->input->post('verify', TRUE);
             $userId = $this->input->post('id', TRUE);
             
             $postInfo = $arrayName = array(
                 'title' => $title,
+                'tags_id' => $tags,
+                'img_url' => $imgURL,
                 'post' => $description,
+                'end_date' => $endDate,
+                'language_req' => $lanReq,
                 'verify' => $verify,
                 'company_url' => $companyUrl,
                 'users_id' => $userId
@@ -237,14 +252,6 @@ class Process extends CI_Controller
         $this->load->view('showOnepage', $postInfo);
     }
 
-    //  public function showPost()
-    //  {
-    //     $this->load->model('VentureModel');
-    //     $query['postsToShow'] = $this->VentureModel->show_post();
-    //     var_dump($id);
-    //     die($query);
-	// 	$this->load->view('editPostPage', $query);
-    //  }
     public function editPostShow($arg)//show the post inside the form, ready to be edited
     {
 		$this->load->model('VentureModel');
