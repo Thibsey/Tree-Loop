@@ -12,9 +12,17 @@ class VentureModel extends CI_Model
     {
         return $this->db->query("SELECT * FROM users WHERE email = ?", array($email))->row_array();
     }
-    public function insertJob($postInfo) 
+    public function insertJob($postInfo, $tagInfo1, $tagInfo2, $tagInfo3) 
 	{
-        return $this->db->insert('posts', $postInfo);
+        $this->db->insert('posts', $postInfo);
+        $postId = $this->db->query("SELECT id FROM posts ORDER BY created_at DESC LIMIT 1;")->row_array();
+        $query = "INSERT INTO tags_has_posts (tags_id, posts_id) VALUES (?,?)";
+        $values = [$tagInfo1, $postId];
+        $this->db->query($query, $values);
+        $values = [$tagInfo2, $postId];
+        $this->db->query($query, $values);
+        $values = [$tagInfo3, $postId];
+        $this->db->query($query, $values);
     }
 
     public function one_post($num)

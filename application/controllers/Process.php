@@ -202,24 +202,20 @@ class Process extends CI_Controller
     public function postjob()
     {
 
-        $t = $this->input->post(NULL, true);
-        echo "<pre>";
-        var_dump($t);
-        echo "</pre>";
-        die();
+        
         $this->form_validation->set_rules('title', 'Title', 'required');
         $this->form_validation->set_rules('description', 'Job Description', 'required');
         $this->form_validation->set_rules('company-url', 'Link to Original Offer', 'required|valid_url');
 
         if ($this->form_validation->run() == false) 
         {
-           $validationerror = validation_errors();
-           $this->load->view('postpage', array('errors' => $validationerror));
-        } 
-        else
-        {
+            $validationerror = validation_errors();
+            $this->load->view('postpage', array('errors' => $validationerror));
+        }  else {
             $title = $this->input->post('title', TRUE);
-            $tags = $this->input->post('tags', TRUE);
+            $tags1 = $this->input->post('tag1', TRUE);
+            $tags2 = $this->input->post('tag2', TRUE);
+            $tags3 = $this->input->post('tag3', TRUE);
             $imgURL = $this->input->post('imgurl', TRUE);
             $description = $this->input->post('description', TRUE);
             $endDate = $this->input->post('enddate', TRUE);
@@ -228,9 +224,8 @@ class Process extends CI_Controller
             $verify = $this->input->post('verify', TRUE);
             $userId = $this->input->post('id', TRUE);
             
-            $postInfo = $arrayName = array(
+            $postInfo = array(
                 'title' => $title,
-                'tags_id' => $tags,
                 'img_url' => $imgURL,
                 'post' => $description,
                 'end_date' => $endDate,
@@ -239,9 +234,19 @@ class Process extends CI_Controller
                 'company_url' => $companyUrl,
                 'users_id' => $userId
             );
-                 $this->load->model('VentureModel');
-                 $this->VentureModel->insertJob($postInfo);
-                 $this->load->view('postpage');
+            $tagInfo1 = array(
+                'tags_id' => $tags1,
+            );
+            $tagInfo2 = array(
+                'tags_id' => $tags2,
+            );
+            $tagInfo3 = array(
+                'tags_id' => $tags3,
+            );
+
+            $this->load->model('VentureModel');
+            $this->VentureModel->insertJob($postInfo, $tagInfo1, $tagInfo2, $tagInfo3);
+            $this->load->view('postpage');
         }
     }
 

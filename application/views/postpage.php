@@ -150,12 +150,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <i>Job Title &amp; Type of Company</i>
                 <br>
                 <input type="text" name="title" placeholder="Job Title">
-                <select name="tags">
-                    <?php if (isset($tags)) { ?>
-                        <?php foreach ($tags as $option) { ?>
-                            <option value="<?= $option['id'] ?>"><?= $option['tag'] ?></option>
-                    <?php }} ?>
-                </select>
                 <br>
                 <br>
                 <i>Company Logo:</i>
@@ -184,6 +178,28 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <input type="hidden" name="verify" value="0">
                 <input type="hidden" name="id" value="<?= $this->session->userdata('id')?>">
                 <br>
+                <br>
+                <select name="tag1">
+                    <option value="">Tags</option>
+                    <?php if (isset($tags)) { ?>
+                        <?php foreach ($tags as $option) { ?>
+                            <option value="<?= $option['id'] ?>"><?= $option['tag'] ?></option>
+                    <?php }} ?>
+                </select>
+                <select name="tag2">
+                    <option value="">Tags</option>
+                    <?php if (isset($tags)) { ?>
+                        <?php foreach ($tags as $option) { ?>
+                            <option value="<?= $option['id'] ?>"><?= $option['tag'] ?></option>
+                    <?php }} ?>
+                </select>
+                <select name="tag3">
+                    <option value="">Tags</option>
+                    <?php if (isset($tags)) { ?>
+                        <?php foreach ($tags as $option) { ?>
+                            <option value="<?= $option['id'] ?>"><?= $option['tag'] ?></option>
+                    <?php }} ?>
+                </select>
                 <br>
                 <input type="submit" class="btn btn-secondary" value="Post">
             </form>
