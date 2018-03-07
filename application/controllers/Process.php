@@ -19,8 +19,8 @@ class Process extends CI_Controller
 
     public function register()
     {
-        $this->form_validation->set_rules('userName', 'Username', 'required|alpha');
         $this->form_validation->set_rules('companyName', 'Company Name', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('companyIdentify', 'Company Identifier', 'required|alpha_numeric_spaces');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
         $this->form_validation->set_rules('confirmPassword', 'Password Confirm', 'required|matches[password]');
@@ -35,19 +35,19 @@ class Process extends CI_Controller
         } 
         else 
         {
-            $userName = $this->input->post('userName', true);
             $rankId = $this->input->post('rankId', true);
+            $companyIdentify = $this->input->post('companyIdentify', true);
             $companyName = $this->input->post('companyName', true);
             $email = $this->input->post('email', true);
             $password = $this->input->post('password', true);
             $salt = bin2hex(openssl_random_pseudo_bytes(22));
-            $encrypted_password = md5($password . '' . $salt);
+            $encrypted_password = sha1($password . '' . $salt);
             $contactAddress = $this->input->post('contactAddress', true);
             $contactPhoneNumber = $this->input->post('contactPhoneNumber', true);
            
             $query = array(
-                'user_name' => $userName,
                 'rank_id' => $rankId,
+                'comp_identify' => $companyIdentify,
                 'comp_name' => $companyName,
                 'email' => $email,
                 'password' => $encrypted_password,
@@ -77,7 +77,7 @@ class Process extends CI_Controller
         $password_login = $this->input->post('password-login', true);
         $this->load->model('VentureModel');
         $user = $this->VentureModel->get_user_by_email($email_login);
-        $encrypted_password = md5($password_login . '' . $user['salt_data']);
+        $encrypted_password = sha1($password_login . '' . $user['salt_data']);
         if ($user['rank_id'] > 2) 
         {
             $logerror['logerror'] = "Your account has not been verified yet, please contact a Venture Cafe administrator";
@@ -111,6 +111,7 @@ class Process extends CI_Controller
             $this->load->model('VentureModel');
             $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
             $data['users'] = $this->VentureModel->admin_take_users();
+            $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
             $data['posts'] = $this->VentureModel->admin_take_posts();
             $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
             $this->load->view('adminpanal', $data);
@@ -128,6 +129,7 @@ class Process extends CI_Controller
             $this->VentureModel->admin_verify_post($id);
             $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
             $data['users'] = $this->VentureModel->admin_take_users();
+            $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
             $data['posts'] = $this->VentureModel->admin_take_posts();
             $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
             $this->load->view('adminpanal', $data);
@@ -146,6 +148,7 @@ class Process extends CI_Controller
             $this->VentureModel->admin_delete_post($id);
             $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
             $data['users'] = $this->VentureModel->admin_take_users();
+            $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
             $data['posts'] = $this->VentureModel->admin_take_posts();
             $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
             $this->load->view('adminpanal', $data);
@@ -163,6 +166,7 @@ class Process extends CI_Controller
             $this->VentureModel->admin_verify_user($id);
             $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
             $data['users'] = $this->VentureModel->admin_take_users();
+            $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
             $data['posts'] = $this->VentureModel->admin_take_posts();
             $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
             $this->load->view('adminpanal', $data);
@@ -180,6 +184,7 @@ class Process extends CI_Controller
             $this->VentureModel->admin_delete_user($id);
             $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
             $data['users'] = $this->VentureModel->admin_take_users();
+            $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
             $data['posts'] = $this->VentureModel->admin_take_posts();
             $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
             $this->load->view('adminpanal', $data);

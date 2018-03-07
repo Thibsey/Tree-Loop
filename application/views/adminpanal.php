@@ -169,6 +169,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <table>
                 <tr>
                 <td>
+
+                    <!-- TAB BUTTONS -->
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link active btn btn-outline-secondary" id="v-pills-admin-overview-tab" data-toggle="pill" href="#v-pills-admin-overview" role="tab" aria-controls="v-pills-admin-overview" aria-selected="true">Admin Overview</a><br>
                         <a class="nav-link btn btn-outline-secondary" id="v-pills-userverify-tab" data-toggle="pill" href="#v-pills-userverify" role="tab" aria-controls="v-pills-userverify" aria-selected="false">User verification</a><br>
@@ -238,7 +240,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         <select name="rank">
                                             <option value="0">Super Admin</option>
                                             <option value="1">Admin</option>
-                                            <option value="2">users</option>
+                                            <option value="2">Users</option>
                                         </select>
                                         <input type="submit" value="Update" class="btn btn-secondary">
                                     </form><br><br>

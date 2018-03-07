@@ -86,6 +86,11 @@ class VentureModel extends CI_Model
         return $this->db->query("SELECT * FROM users")->result_array();
     }
 
+    public function admin_take_users_non_admins()
+    {
+        return $this->db->query("SELECT * FROM users WHERE rank_id = 2")->result_array();
+    }
+
     public function admin_verify_user($id)
     {
         $this->db->query("UPDATE users SET rank_id = 2 WHERE id = $id;");

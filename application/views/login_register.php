@@ -134,30 +134,31 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="register">
                     <h2>Register</h2>
                     <form action="register" method="POST">
-                        <input type="text" class="form-control" name="userName" placeholder="User Name">
-                            
-                            <br>
-                            <input type="text" class="form-control" name="companyName" placeholder="Company Name">
-                            
-                            <br>
-                            <input type="text" class="form-control" name="email" placeholder="Email">
-                            
-                            <br>
-                            <input type="password" class="form-control" name="password" placeholder="Password">
-                            
-                            <br>
-                            <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password">
-                            
-                            <br>
-                            <input type="text" class="form-control" name="contactAddress" placeholder="Contact Address">
-                            
-                            <br>
-                            <input type="text" class="form-control" name="contactPhoneNumber" placeholder="Contact Phone Number">
-                            
-                            <br>
-                            <input type="hidden" name="rankId" value="3">
+                        <input type="text" class="form-control" name="companyName" placeholder="Company Name">
+                        
+                        <br>
+                        <input type="text" class="form-control" name="companyIdentify" placeholder="Company Identifier">
+                        
+                        <br>
+                        <input type="text" class="form-control" name="contactAddress" placeholder="Contact Address">
+                        
+                        <br>
+                        <input type="text" class="form-control" name="contactPhoneNumber" placeholder="Contact Phone Number">
+                        
+                        <br>
+                        <input type="text" class="form-control" name="email" placeholder="Email">
+                        
+                        <br>
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                        
+                        <br>
+                        <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password">
+                        
+                        
+                        <br>
+                        <input type="hidden" name="rankId" value="3">
 
-                        <input type="submit" class="btn btn-secondary" vamue="Register">
+                        <input type="submit" class="btn btn-secondary" value="Register">
                     </form>
                 </div>
             </td>

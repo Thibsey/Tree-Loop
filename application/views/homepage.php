@@ -1,7 +1,14 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 // echo "<pre>";
-// var_dump($listjobs);
+// $password = "123456";
+// $salt = bin2hex(openssl_random_pseudo_bytes(22));
+// $encrypted_password = md5($password . '' . $salt);
+// echo $password;
+// echo "<br>";
+// echo $salt;
+// echo "<br>";
+// echo $encrypted_password;
 // echo "</pre>";
 // die();
 ?>
@@ -159,7 +166,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     </style>
 </head>
 <body>	
-	<div >
+	<div>
         <header>
             <div  id="headerpic">
                 <a href="http://localhost"><img src="https://i.imgur.com/M6JQeoM.png"></a>
