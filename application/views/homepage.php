@@ -51,6 +51,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         height: 100%;
         position: relative;
         text-align:center;
+        
         }
         a {
         color: #e06a26;
@@ -58,6 +59,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         -o-transition: 0.5s;
         transition: 0.5s;
         font-size:25px;
+        font-family:"gotham medium", Arial, sans-serif;
         }
 
         p {
@@ -65,9 +67,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
         font-size: 18px;
         font-weight: 400;
         }
-        h1, h2, h3, h4, h5, h6, figure {
+        h2, h3, h4, h5, h6, figure {
         color: rgba(0, 0, 0, 0.7);
-        font-family: "Playfair Display", Arial, serif;
+        font-family: "gotham book", Arial, sans-serif;
+        font-weight: 400;
+        margin: 0 0 30px 0;
+        letter-spacing: 1px;
+        }
+        h1 {
+        color: rgba(0, 0, 0, 0.7);
+        font-family: "gotham light", Arial, sans-serif;
         font-weight: 400;
         margin: 0 0 30px 0;
         letter-spacing: 1px;
@@ -83,6 +92,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         }
         #fh5co-intro-section {
         padding-top: 6em;
+        
         }
         .featured-grid, .featured-grid.featured-grid-2 {
         width: 100%;
@@ -138,19 +148,46 @@ defined('BASEPATH') or exit('No direct script access allowed');
         position: relative;
         background: #262626;
         padding-top:50px;
+        height:200px;
         }
         
-        #footerone{
-            padding-left:50px;
+       #footerone{
+            padding-left:35px;
+            padding-top:20px;
         
         }
         #footerimg{
-            padding-right:400px;
-            padding-left:400px;
+            padding-right:320px;
+            padding-left:320px;
+            padding-top:20px;
            
         }
+        #footertow{
+            padding-top:20px;
+            padding-top:50px;
 
-        
+        }
+        .tdid{
+            width:250px;
+        }
+        #mainpic{
+            width:1000px;
+            /* background-color:#e06a26; */
+            margin:40px;  
+            
+        }
+        .pclass{
+            color:#262626;
+            padding-top:20px;
+        }
+        hr{
+            background-color:#e06a26  ;
+            height:2px;
+            padding-top:10px;
+            margin-top:50px;
+        }
+         
+         
 
     </style>
 </head>
@@ -211,20 +248,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <?php } ?>
 			        </div>
 		        </div>
-	        </div>
-            <div id="fh5co-intro-section" class="col-md-12">
-                <table>
+            </div>
+            <hr>
+            <center>
+            <table id="mainpic">
+            <div id="fh5co-intro-section" class="col-md-12" >
+                
                    
                     <tr>
                     <?php foreach ($highlight as $option) { ?>
-                    <td>
-                        <center>
-                    <div class="col-md-10 col-md-offset-2 text-center" id="mainpic">
-                        <img src="https://i.imgur.com/M6JQeoM.png" alt="" align="bottom">
-                        <p><?=$option['title']?></p>
-                        <p><?=$option['img_url']?></p>
-                        <p><?=$option['comp_name']?></p>
-                        <p><?=$option['post']?></p>
+                    <td class="tdid">
+                        
+                    <div class="col-md-10 col-md-offset-2 text-center" >
+                        <!-- <img  src="" align="bottom" id="mainpic"> -->
+                        <p class="pclass"><?=$option['title']?></p>
+                        <img class="pclass" src="<?=$option['img_url']?>" width="300">
+                        <p class="pclass"><?=$option['comp_name']?></p>
+                        <p class="pclass"><?=$option['post']?></p>
                      
                     </div>
                     </td>
@@ -244,9 +284,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </div>
                     </td> -->
                    
-                </table>        
-	        </div>
-	    </div>
+                       
+            </div>
+            </table> 
+            </center>
+        </div>
+                    </center>
         <footer id="fh5co-footer" role="contentinfo">
                  <table>
                      <tr>
@@ -258,10 +301,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <img src="https://i.imgur.com/FCqpUOR.png" alt="venture caffe logo" width= >
                         </td>
                         <td id="footertow">          
-                <a href="#" class="fa fa-facebook"></a>&nbsp;&nbsp;&nbsp;
-                <a href="#" class="fa fa-twitter"></a>&nbsp;&nbsp;&nbsp;
-                <a href="#" class="fa fa-linkedin"></a>&nbsp;&nbsp;&nbsp;
-                <a href="#" class="fa fa-instagram"></a>
+                <a href="https://www.facebook.com/VentureCafeRotterdam/" class="fa fa-facebook"></a>&nbsp;&nbsp;&nbsp;
+                <a href="https://twitter.com/VentureCafeRdam" class="fa fa-twitter"></a>&nbsp;&nbsp;&nbsp;
+                <a href="https://www.linkedin.com/company-beta/10126728/" class="fa fa-linkedin"></a>&nbsp;&nbsp;&nbsp;
+                <a href="https://www.instagram.com/venturecaferotterdam/" class="fa fa-instagram"></a>
                         </td>          
                     </tr>
                 </table>
