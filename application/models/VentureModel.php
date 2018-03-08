@@ -31,9 +31,19 @@ class VentureModel extends CI_Model
         $this->db->query($query, $values);
     }
 
-    public function one_post($num)
+    public function one_post($id)
     {
-        return $this->db->query("SELECT * FROM posts WHERE id = $num")->row_array();
+        return $this->db->query("SELECT posts.title, posts.post, posts.end_date, posts.language_req, posts.company_url, posts.img_url, users.comp_name, users.comp_identify FROM posts LEFT JOIN users ON posts.users_id = users.id WHERE posts.id = $id")->result_array();
+    }
+
+    public function post_tags_postId($id)
+    {
+        return $this->db->query("SELECT tags.id, tags.tag FROM posts LEFT JOIN tags_has_posts ON posts.id = tags_has_posts.posts_id LEFT JOIN tags ON tags_has_posts.tags_id = tags.id WHERE posts.id =$id")->result_array();
+    }
+
+    public function search_posts_by_tags($id)
+    {
+        return $this->db->query("SELECT posts.id, posts.title, users.comp_name FROM tags_has_posts LEFT JOIN posts ON tags_has_posts.posts_id = posts.id LEFT JOIN users ON posts.users_id = users.id WHERE tags_has_posts.tags_id =$id")->result_array();
     }
 
     public function home_page_list()
@@ -50,7 +60,7 @@ class VentureModel extends CI_Model
 
     public function show_page_list()
     {
-        return $this->db->query("SELECT posts.id, posts.title, posts.post, posts.created_at, posts.verify, users.comp_name
+        return $this->db->query("SELECT posts.id, posts.highlights, posts.title, posts.post, posts.created_at, posts.verify, users.comp_name
                                 FROM posts
                                 LEFT JOIN users
                                 ON posts.users_id = users.id
@@ -100,6 +110,11 @@ class VentureModel extends CI_Model
         $this->db->query($query2);
     }
 
+    public function get_postId_by_userId($id)
+    {
+        return $this->db->query("SELECT posts.id FROM posts WHERE users_id = $id")->result_array();
+    }
+
     public function admin_take_users_for_verify()
     {
         return $this->db->query("SELECT * FROM users WHERE rank_id = 3")->result_array();
@@ -122,6 +137,7 @@ class VentureModel extends CI_Model
 
     public function admin_delete_user($id)
     {
+        $this->db->query("DELETE FROM posts WHERE users_id = $id;");
         $this->db->query("DELETE FROM users WHERE id = $id;");
     }
 
@@ -132,8 +148,8 @@ class VentureModel extends CI_Model
 
     public function admin_edit_post($id, $arg)
     {
-        $query = "UPDATE posts SET title = ?, post = ?, company_url= ?, verify = ? WHERE id = $id";
-        $values = [$arg['title'], $arg['post'], $arg['company_url'], $arg['verify']];
+        $query = "UPDATE posts SET title = ?, post = ?, company_url= ?, verify = ?, img_url = ?, language_req = ?, end_date = ? WHERE id = $id";
+        $values = [$arg['title'], $arg['post'], $arg['company_url'], $arg['verify'], $arg['imgurl'], $arg['lanreq'], $arg['enddate']];
         $this->db->query($query, $values);
     }
 
@@ -159,6 +175,23 @@ class VentureModel extends CI_Model
         $this->db->query("DELETE FROM tags_has_posts WHERE posts_id = $id");
     }
 
+    public function admin_highlight_post($id)
+    {
+        $query = "UPDATE posts SET highlights = 1 WHERE id = ?";
+        $this->db->query($query, $id);
+    }
+    public function admin_unhighlight_post($id)
+    {
+        $query = "UPDATE posts SET highlights = 0 WHERE id = ?";
+        $this->db->query($query, $id);
+    }
+    public function delete_all_tags($id)
+    {
+        foreach ($id as $key) {
+            $this->db->query("DELETE FROM tags_has_posts WHERE posts_id = {$key['id']}");
+        }
+    }
+
     public function superAdmin_update_user_rank($id, $update)
     {
         $query = "UPDATE users SET rank_id = $update WHERE id = $id";
@@ -168,6 +201,14 @@ class VentureModel extends CI_Model
     public function get_tags()
     {
         return $this->db->query("SELECT * FROM tags;")->result_array();
+    }
+
+    public function get_mail_by_id($id)
+    {
+        $userId = $this->db->query("SELECT posts.users_id FROM posts WHERE id = $id")->result_array();
+        $userEmail =$this->db->query("SELECT users.email FROM users WHERE id = {$userId[0]['users_id']}")->result_array();
+        return $userEmail;
+        
     }
 }
 ?>

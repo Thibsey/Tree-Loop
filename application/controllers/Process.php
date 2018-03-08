@@ -140,6 +140,15 @@ class Process extends CI_Controller
     {
         if ($this->session->userdata('rank_id') < 2) {
             $this->load->model('VentureModel');
+            $this->load->library('email');
+            $userE = $this->VentureModel->get_mail_by_id($id);
+            $msg = "The job post has been approved by the Venture Café Admins and now visable to everyone.";
+            $userEmail = $userE[0]['email'];
+            $this->email->from('tihomir.balaban@treeloop.com', 'Tree Loop Inc');
+            $this->email->to($userEmail);
+            $this->email->subject('Your post at Venture Café - Tree Loop Inc');
+            $this->email->message($msg);
+            $this->email->send();
             $this->VentureModel->admin_verify_post($id);
             $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
             $data['users'] = $this->VentureModel->admin_take_users();
@@ -161,6 +170,17 @@ class Process extends CI_Controller
     {
         if ($this->session->userdata('rank_id') < 2) {
             $this->load->model('VentureModel');
+            $this->load->library('email');
+            $userE = $this->VentureModel->get_mail_by_id($id);
+            $msg = "The job post has been declined by the Venture Café Admins.
+please contact an Venture Café Admin for more information.";
+            $userEmail = $userE[0]['email'];
+            $this->email->from('tihomir.balaban@treeloop.com', 'Tree Loop Inc');
+            $this->email->to($userEmail);
+            $this->email->subject('Your post at Venture Café - Tree Loop Inc');
+            $this->email->message($msg);
+            $this->email->send();
+            $this->VentureModel->admin_verify_post($id);
             $this->VentureModel->admin_delete_tags($id);
             $this->VentureModel->admin_delete_post($id);
             $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
@@ -290,6 +310,8 @@ class Process extends CI_Controller
     {
         if ($this->session->userdata('rank_id') == 0) {
             $this->load->model('VentureModel');
+            $pId = $this->VentureModel->get_postId_by_userId($id);
+            $this->VentureModel->delete_all_tags($pId);
             $this->VentureModel->admin_delete_user($id);
             $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
             $data['users'] = $this->VentureModel->admin_take_users();
@@ -306,12 +328,12 @@ class Process extends CI_Controller
         }
     }
 
-    //HERE
     public function adminGoEditPost($id)
     {
         if ($this->session->userdata('rank_id') < 2) {
             $this->load->model('VentureModel');
             $data['postEdit'] = $this->VentureModel->admin_get_post_to_edit($id);
+            $data['tags'] = $this->VentureModel->get_tags();
             $this->load->view('admineditpost', $data);
         } else {
             $this->load->model('VentureModel');
@@ -328,7 +350,47 @@ class Process extends CI_Controller
             $editInfo = $this->input->post(null, true);
             $this->VentureModel->admin_edit_post($id, $editInfo);
             $data['postEdit'] = $this->VentureModel->admin_get_post_to_edit($id);
+            $data['tags'] = $this->VentureModel->get_tags();
             $this->load->view('admineditpost', $data);
+        } else {
+            $this->load->model('VentureModel');
+            $jobs['listjobs'] = $this->VentureModel->home_page_list();
+            $jobs['highlight'] = $this->VentureModel->highlight();
+            $this->load->view('homepage', $jobs);
+        }
+    }
+
+    public function adminHighlightPost($id)
+    {
+        if ($this->session->userdata('rank_id') < 2) {
+            $this->load->model('VentureModel');
+            $this->VentureModel->admin_highlight_post($id);
+            $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
+            $data['users'] = $this->VentureModel->admin_take_users();
+            $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
+            $data['posts'] = $this->VentureModel->admin_take_posts();
+            $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $data['userposts'] = $this->VentureModel->show_page_list();
+            $this->load->view('adminpanal', $data);
+        } else {
+            $this->load->model('VentureModel');
+            $jobs['listjobs'] = $this->VentureModel->home_page_list();
+            $jobs['highlight'] = $this->VentureModel->highlight();
+            $this->load->view('homepage', $jobs);
+        }
+    }
+    public function adminUnhighlightPost($id)
+    {
+        if ($this->session->userdata('rank_id') < 2) {
+            $this->load->model('VentureModel');
+            $this->VentureModel->admin_unhighlight_post($id);
+            $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
+            $data['users'] = $this->VentureModel->admin_take_users();
+            $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
+            $data['posts'] = $this->VentureModel->admin_take_posts();
+            $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $data['userposts'] = $this->VentureModel->show_page_list();
+            $this->load->view('adminpanal', $data);
         } else {
             $this->load->model('VentureModel');
             $jobs['listjobs'] = $this->VentureModel->home_page_list();
@@ -345,9 +407,9 @@ class Process extends CI_Controller
         $this->form_validation->set_rules('description', 'Job Description', 'required|max_length[500]');
         $this->form_validation->set_rules('lanreq', 'Language Requirement', 'required|alpha');
         $this->form_validation->set_rules('company-url', 'Link to Original Offer', 'required|valid_url');
-        $this->form_validation->set_rules('tag1', 'Tags', 'required|numeric');
-        $this->form_validation->set_rules('tag2', 'Tags', 'required|numeric');
-        $this->form_validation->set_rules('tag3', 'Tags', 'required|numeric');
+        $this->form_validation->set_rules('tag1', 'Tags', 'required|differs[tag2]|differs[tag3]');
+        $this->form_validation->set_rules('tag2', 'Tags', 'differs[tag1]|differs[tag3]');
+        $this->form_validation->set_rules('tag3', 'Tags', 'differs[tag1]|differs[tag2]');
         
         if ($this->form_validation->run() == false) 
         {
@@ -399,10 +461,18 @@ class Process extends CI_Controller
     {
         $this->load->model('VentureModel');
         $postInfo['posts'] = $this->VentureModel->one_post($arg);
+        $postInfo['tags'] = $this->VentureModel->post_tags_postId($arg);
         $this->load->view('showOnepage', $postInfo);
     }
 
-    public function editPostShow($arg)//show the post inside the form, ready to be edited
+    public function searchByTags($arg)
+    {
+        $this->load->model('VentureModel');
+        $posts['postsByTags'] = $this->VentureModel->search_posts_by_tags($arg);
+        $this->load->view('postsbytags', $posts);
+    }
+
+    public function editPostShow($arg)
     {
 		$this->load->model('VentureModel');
         $query['showIt'] = $this->VentureModel->show_post($arg);
@@ -448,12 +518,11 @@ class Process extends CI_Controller
     public function deleteUser($id)
     {
         $this->load->model('VentureModel');
+        $pId = $this->VentureModel->get_postId_by_userId($id);
+        $this->VentureModel->delete_all_tags($pId);
         $this->VentureModel->delete_user($id);
         $this->session->sess_destroy();
-        $this->session->set_userdata($user1 = null);
-        $jobs['listjobs'] = $this->VentureModel->home_page_list();
-        $jobs['highlight'] = $this->VentureModel->highlight();
-        $this->load->view('homepage', $jobs);
+        $this->load->view('logout');
     } 
 
      public function logout()
@@ -464,9 +533,3 @@ class Process extends CI_Controller
 
     
 }
-
-
-// echo "<pre>";
-// var_dump();
-// echo "</pre>";
-// die();

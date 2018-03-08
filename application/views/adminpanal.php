@@ -229,6 +229,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <p>List of posts that have been posted by verified users, <br> that are pending admin approval.<br> The admin can decline(delete), <br> accept and/or edit the posts before approving.</p>
                             <h5><strong>User Management:</strong></h5>
                             <p>List of all verified users. <br> The admin can remove their accounts <br> here or adjust their password. <br> Additionally the Super admin can also <br> promote users to admin status and delete admin accounts. </p>
+                            <h5><strong>Post Management:</strong></h5>
+                            <p>List of all verified posts. <br>
+                            The admin can remove, <br> edit and highlight the posts.
+                            <br> (only the 3 most recent hightlights will be highlighted).</p>
                         </div>
 
 
@@ -267,15 +271,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <?php if(0 == $this->session->userdata('rank_id')){
                             if (isset($users)) {
                                 foreach ($users as $user) { ?>
-                                    <h5><strong>Company Name: &nbsp; </strong><?= $user['comp_name'] ?></h5>
+                                    <h5><strong>Company Name: &nbsp; </strong><?= $user['comp_name'] ?><br><?php if ($user['rank_id'] == 0) {?>
+                                        <strong>User Rank:</strong> &nbsp; Super Admin
+                                    <?php } elseif ($user['rank_id'] == 1) {?>
+                                        <strong>User Rank:</strong> &nbsp; Admin
+                                    <?php } elseif ($user['rank_id'] == 2) { ?>
+                                        <strong>User Rank:</strong> &nbsp; User
+                                    <?php }?></h5>
                                     <a href="/superadmin-delete-user/<?= $user['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
-                                    <a href="/adminEditUserPage/<?= $user['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a>
+                                    <a href="/adminEditUserPage/<?= $user['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a><br><br>
                                     <form action="/superadmin-rank-update/<?=$user['id']?>" method="POST">
                                         <select name="rank-update">
                                             <option value="0">Super Admin</option>
                                             <option value="1">Admin</option>
                                             <option value="2">Users</option>
-                                        </select><br><br>
+                                        </select><br>
                                         <input type="submit" value="Update" class="btn btn-secondary">
                                     </form><br><br>
                             <?php  }} else { ?><br>
@@ -299,17 +309,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <?php if (isset($userposts)) {
                                 foreach ($userposts as $toEdit) { ?>
                                     <h5><strong>Posted by: &nbsp; </strong><?= $toEdit['comp_name'] ?></h5>
-                                    <strong>Edit Post: &nbsp; </strong><a href="/admin-go-edit-post/<?= $toEdit['id'] ?>"><?= $toEdit['title'] ?></a>
+                                    <?php if ($toEdit['highlights'] == 1) {?>
+                                        <strong style="color: red;">Highlighted Post</strong><br>
+                                    <?php } ?>
+                                    <strong>Edit Post: &nbsp; </strong><a href="/admin-go-edit-post/<?= $toEdit['id'] ?>"><?= $toEdit['title'] ?></a><br>
                                     <a href="/admin-delete-post/<?= $toEdit['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
+                                    <?php if ($toEdit['highlights'] == 0) { ?>
+                                    <a href="/admin-highlight-post/<?= $toEdit['id'] ?>"><button class="btn btn-secondary">Highlight Post</button></a>
+                                    <?php } elseif ($toEdit['highlights'] == 1) {?>
+                                    <a href="/admin-unhighlight-post/<?= $toEdit['id'] ?>"><button class="btn btn-secondary">Unhighlight</button></a>
+                                    <?php } ?>
                                     <br>
                                     <br>
                                     <br>
-                            <?php 
-                        }
-                    } else { ?>
+                            <?php } } else { ?>
                             <h1><strong>No pending posts to verify.</strong></h1>
-                            <?php 
-                        } ?>
+                            <?php } ?>
                         </div>
                     </div>
                 </td>
@@ -339,4 +354,3 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             
     </body>
 </html>
-

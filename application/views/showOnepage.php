@@ -1,5 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+// echo "<pre>";
+// var_dump($tags);
+// echo "</pre>";
+// die;
 ?>
 <!DOCTYPE html>
 <html>
@@ -203,9 +207,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <div id="fh5co-intro-section">
 		    <div>
 			    <div class="col-md-12 col-md-offset-2 text-center">
-                    <h1><?= $posts['title']  ?></h1>
-                    <p><?= $posts['post']  ?></p>
-                    <!-- <a href="<?= $post['contact_url']?>"></a> -->
+                    <h1><img class="pclass" src="<?= $posts[0]['img_url'] ?>" width="100"><strong><?= $posts[0]['comp_name']  ?></strong></h1>
+                    <h2><?= $posts[0]['title'] ?></h2>
+                    <p><?= $posts[0]['post']  ?></p>
+                    <strong>Language Requirements:</strong><br> <?= $posts[0]['language_req'] ?><br><br>
+                    <strong>End Date:</strong> <p><?= $posts[0]['end_date'] ?></p>
+                    <a href="<?= $posts[0]['company_url']?>"><?= $posts[0]['company_url'] ?></a><br><br>
+                    <i>Tags:</i><br>
+                    <a href="/search-by-tags/<?= $tags[0]['id'] ?>"><button class="btn btn-secondary"><?= $tags[0]['tag'] ?></button></a>
+                    <a href="/search-by-tags/<?= $tags[1]['id'] ?>"><button class="btn btn-secondary"><?= $tags[1]['tag'] ?></button></a>
+                    <a href="/search-by-tags/<?= $tags[2]['id'] ?>"><button class="btn btn-secondary"><?= $tags[2]['tag'] ?></button></a>
                 </div>
 		    </div>
 	    </div>  

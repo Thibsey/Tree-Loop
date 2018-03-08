@@ -1,5 +1,9 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed'); 
+defined('BASEPATH') or exit('No direct script access allowed');
+// echo "<pre>";
+// var_dump($postEdit);
+// echo "</pre>";
+// die;
 ?>
 <!DOCTYPE html>
 <html>
@@ -178,18 +182,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <?php if (isset($postEdit)) { ?>
 
             <form action="/admin-edit-post/<?= $postEdit['id'] ?>" method="POST">
-                <input type="text" name="title" id="textid" value="<?= $postEdit['title'] ?>" >
-                <br>
-                <br>
-                <textarea name="post" id="textid2" class="border border-secondary" placeholder="500 Characters Max" rows="7" cols="60"><?= $postEdit['post'] ?></textarea>
-                <br>
-                <br>
-                <input type="text" name="company_url" id="textid" value="<?= $postEdit['company_url'] ?>">
-                <br>
-                <br>
+                <i>Title:</i><br>
+                <input type="text" name="title" id="textid" value="<?= $postEdit['title'] ?>" ><br><br>
+                <i>Company Logo:</i><br>
+                <input type="text" name="imgurl" value="<?= $postEdit['img_url'] ?>"><br><br>
+                <i>Discription:</i><br>
+                <textarea name="post" id="textid2" class="border border-secondary" placeholder="500 Characters Max" rows="7" cols="60"><?= $postEdit['post'] ?></textarea><br><br>
+                <i>End Date:</i><br>
+                <input type="date" name="enddate" class="col-2 col-form-label"><br><br>
+                <i>Language Requirement:</i><br>
+                <input type="text" name="lanreq" value="<?= $postEdit['language_req'] ?>" class="col-2 col-form-label"><br><br>
+                <i>Original Offer:</i><br>
+                <input type="text" name="company_url" id="textid" value="<?= $postEdit['company_url'] ?>"><br><br>
                 <input type="hidden" name="verify" value="1">
-                <center>
-                <input type="submit" value="UPDATE"  class="btn btn-outline-secondary" id="tdid" name="submit">
+                <center><br><br>
+                <input type="submit" value="UPDATE"  class="btn btn-outline-secondary" id="tdid" name="submit"><br><br>
+                </center>
             </form>
         </div>
     <?php } ?>
