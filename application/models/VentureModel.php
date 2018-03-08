@@ -85,7 +85,7 @@ class VentureModel extends CI_Model
     
     public function highlight()
     {
-        $query = "SELECT posts.title, posts.post, posts.id, users.comp_name FROM posts JOIN users ON users.id = posts.users_id WHERE highlights = 1 ORDER BY posts.created_at DESC LIMIT 3";
+        $query = "SELECT posts.title, posts.post, posts.id, users.comp_name, posts.img_url FROM posts JOIN users ON users.id = posts.users_id WHERE highlights = 1 ORDER BY posts.created_at DESC LIMIT 3";
         $highToShow = $this->db->query($query)->result_array();
         return $highToShow;
     }
