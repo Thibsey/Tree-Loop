@@ -75,11 +75,7 @@ class VentureModel extends CI_Model
     public function addOneTitle($id) 
 	{
 		$query = "SELECT id, title FROM posts ORDER BY id DESC";
-
 		$listTitle = $this->db->query($query)->result_array($id);
-		// var_dump($query);
-		// die();
-		
 		return $listTitle;
     }
     
@@ -129,6 +125,18 @@ class VentureModel extends CI_Model
         $this->db->query("DELETE FROM users WHERE id = $id;");
     }
 
+    public function admin_get_post_to_edit($arg)
+    {
+        return $this->db->query("SELECT * FROM posts WHERE id = $arg")->row_array();
+    }
+
+    public function admin_edit_post($id, $arg)
+    {
+        $query = "UPDATE posts SET title = ?, post = ?, company_url= ?, verify = ? WHERE id = $id";
+        $values = [$arg['title'], $arg['post'], $arg['company_url'], $arg['verify']];
+        $this->db->query($query, $values);
+    }
+
     public function admin_take_posts()
     {
         return $this->db->query("SELECT * FROM posts")->result_array();
@@ -145,6 +153,10 @@ class VentureModel extends CI_Model
     public function admin_delete_post($id)
     {
         $this->db->query( "DELETE FROM posts WHERE id = $id;");
+    }
+    public function admin_delete_tags($id)
+    {
+        $this->db->query("DELETE FROM tags_has_posts WHERE posts_id = $id");
     }
 
     public function superAdmin_update_user_rank($id, $update)

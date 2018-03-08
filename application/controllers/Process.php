@@ -95,6 +95,7 @@ class Process extends CI_Controller
             if ($user && $user['password'] == $encrypted_password) {
                 $user1 = array(
                     'id' => $user['id'],
+                    'comp_name' => $user['comp_name'],
                     'email' => $user['email'],
                     'rank_id' => $user['rank_id'],
                     'is_logged_in' => true
@@ -125,6 +126,7 @@ class Process extends CI_Controller
             $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
             $data['posts'] = $this->VentureModel->admin_take_posts();
             $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $data['userposts'] = $this->VentureModel->show_page_list();
             $this->load->view('adminpanal', $data);
         } else {
             $this->load->model('VentureModel');
@@ -144,6 +146,7 @@ class Process extends CI_Controller
             $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
             $data['posts'] = $this->VentureModel->admin_take_posts();
             $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $data['userposts'] = $this->VentureModel->show_page_list();
             $this->load->view('adminpanal', $data);
         } else {
             $this->load->model('VentureModel');
@@ -158,12 +161,14 @@ class Process extends CI_Controller
     {
         if ($this->session->userdata('rank_id') < 2) {
             $this->load->model('VentureModel');
+            $this->VentureModel->admin_delete_tags($id);
             $this->VentureModel->admin_delete_post($id);
             $data['usersv'] = $this->VentureModel->admin_take_users_for_verify();
             $data['users'] = $this->VentureModel->admin_take_users();
             $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
             $data['posts'] = $this->VentureModel->admin_take_posts();
             $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $data['userposts'] = $this->VentureModel->show_page_list();
             $this->load->view('adminpanal', $data);
         } else {
             $this->load->model('VentureModel');
@@ -183,6 +188,7 @@ class Process extends CI_Controller
             $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
             $data['posts'] = $this->VentureModel->admin_take_posts();
             $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $data['userposts'] = $this->VentureModel->show_page_list();
             $this->load->view('adminpanal', $data);
         } else {
             $this->load->model('VentureModel');
@@ -202,6 +208,7 @@ class Process extends CI_Controller
             $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
             $data['posts'] = $this->VentureModel->admin_take_posts();
             $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $data['userposts'] = $this->VentureModel->show_page_list();
             $this->load->view('adminpanal', $data);
         } else {
             $this->load->model('VentureModel');
@@ -211,7 +218,7 @@ class Process extends CI_Controller
         }
         
     }
-    public function adminEditPost($arg)
+    public function adminEditUser($arg)
 	{
         if ($this->session->userdata('rank_id)')< 2){
             $this->load->model('VentureModel');
@@ -239,6 +246,7 @@ class Process extends CI_Controller
             $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
             $data['posts'] = $this->VentureModel->admin_take_posts();
             $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $data['userposts'] = $this->VentureModel->show_page_list();
             $this->load->view('adminpanal', $data);
         } else {
             $this->load->model('VentureModel');
@@ -248,7 +256,7 @@ class Process extends CI_Controller
         }
     } 
     
-    public function adminEditPostPage($id)
+    public function adminEditUserPage($id)
     {
         if ($this->session->userdata('rank_id)')< 2){
             $this->load->model('VentureModel');
@@ -269,6 +277,7 @@ class Process extends CI_Controller
             $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
             $data['posts'] = $this->VentureModel->admin_take_posts();
             $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $data['userposts'] = $this->VentureModel->show_page_list();
             $this->load->view('adminpanal', $data);
         } else {
             $this->load->model('VentureModel');
@@ -287,7 +296,39 @@ class Process extends CI_Controller
             $data['usersna'] = $this->VentureModel->admin_take_users_non_admins();
             $data['posts'] = $this->VentureModel->admin_take_posts();
             $data['verify'] = $this->VentureModel->admin_take_posts_for_verify();
+            $data['userposts'] = $this->VentureModel->show_page_list();
             $this->load->view('adminpanal', $data);
+        } else {
+            $this->load->model('VentureModel');
+            $jobs['listjobs'] = $this->VentureModel->home_page_list();
+            $jobs['highlight'] = $this->VentureModel->highlight();
+            $this->load->view('homepage', $jobs);
+        }
+    }
+
+    //HERE
+    public function adminGoEditPost($id)
+    {
+        if ($this->session->userdata('rank_id') < 2) {
+            $this->load->model('VentureModel');
+            $data['postEdit'] = $this->VentureModel->admin_get_post_to_edit($id);
+            $this->load->view('admineditpost', $data);
+        } else {
+            $this->load->model('VentureModel');
+            $jobs['listjobs'] = $this->VentureModel->home_page_list();
+            $jobs['highlight'] = $this->VentureModel->highlight();
+            $this->load->view('homepage', $jobs);
+        }
+    }
+
+    public function adminEditPost($id)
+    {
+        if ($this->session->userdata('rank_id') < 2) {
+            $this->load->model('VentureModel');
+            $editInfo = $this->input->post(null, true);
+            $this->VentureModel->admin_edit_post($id, $editInfo);
+            $data['postEdit'] = $this->VentureModel->admin_get_post_to_edit($id);
+            $this->load->view('admineditpost', $data);
         } else {
             $this->load->model('VentureModel');
             $jobs['listjobs'] = $this->VentureModel->home_page_list();
@@ -373,12 +414,11 @@ class Process extends CI_Controller
     public function editPost($arg)
 	{
         $editInfo = $this->input->post(NULL, TRUE);
-        // var_dump($editPost);
-        // var_dump($args);
-        // die();
 		$this->load->model('VentureModel');
 		$this->VentureModel->edit_item($arg, $editInfo);
-		$this->load->view('editPostPage');
+        $arg = $this->session->userdata('id');
+        $query['showIt'] = $this->VentureModel->show_post($arg);
+        $this->load->view('editPostPage', $query);
     } 
 
     public function addOneTitle($id)
@@ -393,8 +433,11 @@ class Process extends CI_Controller
     public function deletePost($id)
     {
         $this->load->model('VentureModel');
-		$query['deleteIt'] = $this->VentureModel->delete_post($id);
-		$this->load->view('editPostPage');
+        $this->VentureModel->admin_delete_tags($id);
+        $this->VentureModel->delete_post($id);
+        $arg = $this->session->userdata('id');
+        $query['showIt'] = $this->VentureModel->show_post($arg);
+		$this->load->view('editPostPage', $query);
     }
 
     public function deletePage()

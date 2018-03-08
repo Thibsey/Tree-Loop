@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed'); 
 ?>
 <!DOCTYPE html>
 <html>
@@ -97,20 +97,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             padding-top:40px;
             padding-right:350px;
         }
-        
-        #footerone{
-            display:inline-block;
-            padding-right:800px;
-        
-        }
-        #footerone{
-        display:inline-block;
-        padding-right:800px;
-
-        }
-        #footertow{
-        display:inline-block;
-        }
+ 
         .logout_button{
             padding-top:100px;
         }
@@ -119,8 +106,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
             height:2px;
             padding-top:10px;
         }
+        #iddelete{
+            margin-bottom:50px;
+            margin-top:50px;
+        }
         #textid{
             width:600px;
+            border-color:#FFFFFF;
+        }
+        #textid2{
+            width:600px;
+            height:100px;
+            border-color:#FFFFFF;
+        }
+        #tdid{
+            padding-right:100px;
         }
         #footerone{
             padding-left:50px;
@@ -131,6 +131,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
             padding-left:400px;
            
         }
+        
+        
         
       
     </style>
@@ -146,7 +148,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
             </td><td>
             <div id="headernav">
                 <button type="button" class="btn btn-outline-secondary">thuersday gathering</button>
-                <button type="button" class="btn btn-outline-secondary">international</button>
                 <button type="button" class="btn btn-outline-secondary">community</button>
                 <button type="button" class="btn btn-outline-secondary">about us</button>
                 <button type="button" class="btn btn-outline-secondary">contact us</button>
@@ -169,54 +170,48 @@ defined('BASEPATH') or exit('No direct script access allowed');
             </tr>
             </table>
         </header>
-        <hr>
+        <hr >
 
+        
 
-        <h1>We are inside Admin Edit Post</h1>
+        <div id="mainid">
+        <?php if (isset($postEdit)) { ?>
 
-        <form action="/adminEditPost/<?=$user_edit['id']?>" method="POST">
-			<input type="text" name="comp_name" id="comp_name" value="<?= $user_edit['comp_name'] ?>" >
-			<br>
-			<br>
-			<input type="text" name="comp_identify" id="comp_identify" value="<?= $user_edit['comp_identify'] ?>">
-			<br>
-			<br>
-            <input type="text" name="email" id="email" value="<?= $user_edit['email'] ?>">
-            <br>
-            <br>
-			<input type="password" name="password" id="password" value="<?= $user_edit['password'] ?>">
-			<br>
-            <br>
-            <input type="text" name="contact_address" id="contact_address" value="<?= $user_edit['contact_address'] ?>">
-			<br>
-            <br>
-            <input type="text" name="contact_pho_num" id="contact_pho_num" value="<?= $user_edit['contact_pho_num'] ?>">
-			<br>
-			<br>
-            <input type="submit" value="UPDATE" name="submit">
-            <br>
-            <br>
-            <br>
-        </form>
+            <form action="/admin-edit-post/<?= $postEdit['id'] ?>" method="POST">
+                <input type="text" name="title" id="textid" value="<?= $postEdit['title'] ?>" >
+                <br>
+                <br>
+                <textarea name="post" id="textid2" class="border border-secondary" placeholder="500 Characters Max" rows="7" cols="60"><?= $postEdit['post'] ?></textarea>
+                <br>
+                <br>
+                <input type="text" name="company_url" id="textid" value="<?= $postEdit['company_url'] ?>">
+                <br>
+                <br>
+                <input type="hidden" name="verify" value="1">
+                <center>
+                <input type="submit" value="UPDATE"  class="btn btn-outline-secondary" id="tdid" name="submit">
+            </form>
+        </div>
+    <?php } ?>
+    <footer id="fh5co-footer" role="contentinfo">
+                 <table>
+                     <tr>
+                         <td id="footerone">
+                <a href="#"> Credo </a>&nbsp;&nbsp;&nbsp;
+                <a href="#"> Support </a>&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td id="footerimg">
+                <img src="https://i.imgur.com/FCqpUOR.png" alt="venture caffe logo" width= >
+                        </td>
+                        <td id="footertow">          
+                <a href="#" class="fa fa-facebook"></a>&nbsp;&nbsp;&nbsp;
+                <a href="#" class="fa fa-twitter"></a>&nbsp;&nbsp;&nbsp;
+                <a href="#" class="fa fa-linkedin"></a>&nbsp;&nbsp;&nbsp;
+                <a href="#" class="fa fa-instagram"></a>
+                        </td>          
+                    </tr>
+                </table>
+        </footer>
 
-        <footer id="fh5co-footer" role="contentinfo">
-        <table>
-            <tr>
-                <td id="footerone">
-       <a href="#"> Credo </a>&nbsp;&nbsp;&nbsp;
-       <a href="#"> Support </a>&nbsp;&nbsp;&nbsp;
-               </td>
-               <td id="footerimg">
-       <img src="https://i.imgur.com/FCqpUOR.png" alt="venture caffe logo" width= >
-               </td>
-               <td id="footertow">          
-       <a href="#" class="fa fa-facebook"></a>&nbsp;&nbsp;&nbsp;
-       <a href="#" class="fa fa-twitter"></a>&nbsp;&nbsp;&nbsp;
-       <a href="#" class="fa fa-linkedin"></a>&nbsp;&nbsp;&nbsp;
-       <a href="#" class="fa fa-instagram"></a>
-               </td>          
-           </tr>
-       </table>
-</footer>
     </body>
 </html>

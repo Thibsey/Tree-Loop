@@ -257,7 +257,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 foreach ($users as $user) { ?>
                                     <h5><strong>Company Name: &nbsp; </strong><?= $user['comp_name'] ?></h5>
                                     <a href="/superadmin-delete-user/<?= $user['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
-                                    <a href="/adminEditPostPage/<?= $user['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a>
+                                    <a href="/adminEditUserPage/<?= $user['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a>
                                     <form action="/superadmin-rank-update/<?=$user['id']?>" method="POST">
                                         <select name="rank-update">
                                             <option value="0">Super Admin</option>
@@ -273,14 +273,31 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 foreach ($usersna as $userna) { ?>
                                     <h5><strong>Company Name: &nbsp; </strong><?= $userna['comp_name'] ?></h5>
                                     <a href="/superadmin-delete-user/<?= $userna['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
-                                    <a href="/adminEditPostPage/<?= $userna['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a>
+                                    <a href="/adminEditUserPage/<?= $userna['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a>
                                     <br><br>
                             <?php  }} else { ?>
                             <h1><strong>No users to Manage.</strong></h1>
                             <?php }} ?>
                         </div>
+
+                        <!-- POST MANAGEMENT -->
                         <div class="tab-pane fade" id="v-pills-postmanage" role="tabpanel" aria-labelledby="v-pills-postmanage-tab">
                             <h3><strong>Post Management</strong></h3>
+
+                            <?php if (isset($userposts)) {
+                                foreach ($userposts as $toEdit) { ?>
+                                    <h5><strong>Posted by: &nbsp; </strong><?= $toEdit['comp_name'] ?></h5>
+                                    <strong>Edit Post: &nbsp; </strong><a href="/admin-go-edit-post/<?= $toEdit['id'] ?>"><?= $toEdit['title'] ?></a>
+                                    <a href="/admin-delete-post/<?= $toEdit['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
+                                    <br>
+                                    <br>
+                                    <br>
+                            <?php 
+                        }
+                    } else { ?>
+                            <h1><strong>No pending posts to verify.</strong></h1>
+                            <?php 
+                        } ?>
                         </div>
                     </div>
                 </td>

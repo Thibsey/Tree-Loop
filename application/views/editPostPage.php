@@ -1,5 +1,9 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');?>
+defined('BASEPATH') or exit('No direct script access allowed');
+// echo "<pre>";
+// var_dump($showIt);
+// echo "</pre>";
+// die();?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -152,12 +156,17 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
                 <button type="button" class="btn btn-outline-secondary">contact us</button>
                 <?php if (null === $this->session->userdata('is_logged_in')) { ?>
                 <a href="register"><button type="button" class="btn btn-outline-secondary">login-register</button></a>
-                <?php } ?>
+                <?php 
+            } ?>
                 <?php 
                 if (null !== $this->session->userdata('is_logged_in')) { ?>
                     <a href="/editPostShow/<?= $this->session->userdata['id'] ?>"><button class="btn btn-outline-secondary">Account</button></a> 
                     <a href="/logout"><button class="btn btn-outline-secondary">Logout</button></a>
-                <?php } ?>
+                    <?php if ($this->session->userdata('rank_id') < 2) { ?>
+                        <a href="/adminpanel"><button class="btn btn-outline-secondary">Admin Panel</button></a>
+                    <?php 
+                }
+            } ?>
                 
             </div>
             </td>
@@ -167,7 +176,7 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
         <hr >
 
         
-        <h1>We are inside Edit/Delete Post &amp; Terminate account</h1>
+        <h1><?= $this->session->userdata('comp_name')?></h1>
 
         <div id="mainid">
 
@@ -176,37 +185,29 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 
 
 
-        <?php if(isset($showIt))
+        <?php if(isset($showIt)){
         foreach ($showIt as $var) { ?>
-
         <form action="/editPost/<?=$var['id']?>" method="POST">
 			<input type="text" name="title" id="textid" value="<?= $var['title'] ?>" >
 			<br>
 			<br>
-			<input type="text" name="post" id="textid2" value="<?= $var['post'] ?>">
+			<textarea name="post" id="textid2" class="border border-secondary" placeholder="500 Characters Max" rows="7" cols="60"><?= $var['post'] ?></textarea>
 			<br>
 			<br>
 			<input type="text" name="company_url" id="textid" value="<?= $var['company_url'] ?>">
-			<br>
-			<br>
-			<input type="hidden" name="id" value="<?= $var['id'] ?>">
-            
-            <center>
-        
-            <input type="submit" value="UPDATE"  class="btn btn-outline-secondary" id="tdid" name="submit">
-       
+            <br>
+            <input type="submit" value="UPDATE POST" class="btn btn-outline-secondary" id="tdid" name="submit">
 		</form>
-            <a href="/delete/<?=$var['id']?>"><button id="tdid2" class="btn btn-outline-secondary">DELETE</button></a>
+        <br>
+            <a href="/delete/<?=$var['id']?>"><button id="tdid2" class="btn btn-outline-secondary">DELETE POST</button></a>
             <br>
             <br>
             <br>
             <br>
             <br>
             <br>
-       
-        <!-- <hr> -->
         </div>
-    <?php }?>
+    <?php }}?>
 	<a href="/deletePage"><button class="btn btn-outline-secondary" id=
     "iddelete">DELETE ACCOUNT</button></a>
 
