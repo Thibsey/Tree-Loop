@@ -52,37 +52,41 @@ defined('BASEPATH') or exit('No direct script access allowed');
         position: relative;
         text-align:center;
         }
-        a {
-        color: #e06a26;
-        -webkit-transition: 0.5s;
-        -o-transition: 0.5s;
-        transition: 0.5s;
-        }
+      
         hr{
             background-color:#e06a26  ;
             height:2px;
             padding-top:10px;
         }
-        p {
-        margin-bottom: 30px;
-        font-size: 18px;
-        font-weight: 400;
-        }
-        h1, h2, h3, h4, h5, h6, figure {
-        color: rgba(0, 0, 0, 0.7);
-        font-family: "Playfair Display", Arial, serif;
-        font-weight: 400;
-        margin: 0 0 30px 0;
-        letter-spacing: 1px;
-        }
-        #fh5co-footer {
-        padding: 7em 0;
-        float: left;
-        width: 100%;
-        position: relative;
-        background: #262626;
-        padding-top:50px;
-        }
+        a {
+            color: #e06a26;
+            -webkit-transition: 0.5s;
+            -o-transition: 0.5s;
+            transition: 0.5s;
+            font-size:25px;
+            font-family:"gotham medium", Arial, sans-serif;
+            }
+    
+            p {
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-weight: 400;
+            }
+            h2, h3, h4, h5, h6, figure {
+            color: rgba(0, 0, 0, 0.7);
+            font-family: "gotham book", Arial, sans-serif;
+            font-weight: 400;
+            margin: 0 0 30px 0;
+            letter-spacing: 1px;
+            }
+            h1 {
+            color: rgba(0, 0, 0, 0.7);
+            font-family: "gotham light", Arial, sans-serif;
+            font-weight: 400;
+            margin: 0 0 30px 0;
+            letter-spacing: 1px;
+            }
+       
         #fh5co-page {
         position: relative;
         z-index: 2;
@@ -117,16 +121,32 @@ defined('BASEPATH') or exit('No direct script access allowed');
             padding-right:350px;
         }
         
-        #footerone{
-            padding-left:50px;
-        
-        }
-        #footerimg{
-            padding-right:400px;
-            padding-left:400px;
-           
-        }
-
+        #fh5co-footer {
+            padding: 7em 0;
+            float: left;
+            width: 100%;
+            position: relative;
+            background: #262626;
+            padding-top:50px;
+            height:200px;
+            }
+            
+           #footerone{
+                padding-left:35px;
+                padding-top:20px;
+            
+            }
+            #footerimg{
+                padding-right:320px;
+                padding-left:320px;
+                padding-top:20px;
+               
+            }
+            #footertow{
+                padding-top:20px;
+                padding-top:50px;
+    
+            }
 
 
 
@@ -174,7 +194,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <?php foreach ($titles as $var) {?>
             <ul>
                 <strong><?= $var['comp_name']?>:</strong> &nbsp;
-                <a href= <?= "'/onepost/".$var['id']."'";?>><?= $var['title']?></a>
+                <a href= <?= "'/onepost/".$var['id']."'";?>><?= $var['title']?></a><br><br><br><br>
             
             </ul>
             <?php } ?>
@@ -196,10 +216,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
    <img src="https://i.imgur.com/FCqpUOR.png" alt="venture caffe logo" width= >
            </td>
            <td id="footertow">          
-   <a href="#" class="fa fa-facebook"></a>&nbsp;&nbsp;&nbsp;
-   <a href="#" class="fa fa-twitter"></a>&nbsp;&nbsp;&nbsp;
-   <a href="#" class="fa fa-linkedin"></a>&nbsp;&nbsp;&nbsp;
-   <a href="#" class="fa fa-instagram"></a>
+           <a href="https://www.facebook.com/VentureCafeRotterdam/" class="fa fa-facebook"></a>&nbsp;&nbsp;&nbsp;
+           <a href="https://twitter.com/VentureCafeRdam" class="fa fa-twitter"></a>&nbsp;&nbsp;&nbsp;
+           <a href="https://www.linkedin.com/company-beta/10126728/" class="fa fa-linkedin"></a>&nbsp;&nbsp;&nbsp;
+           <a href="https://www.instagram.com/venturecaferotterdam/" class="fa fa-instagram"></a>
            </td>          
        </tr>
    </table>
