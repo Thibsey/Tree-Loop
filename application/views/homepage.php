@@ -1,16 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-// echo "<pre>";
-// $password = "123456";
-// $salt = bin2hex(openssl_random_pseudo_bytes(22));
-// $encrypted_password = md5($password . '' . $salt);
-// echo $password;
-// echo "<br>";
-// echo $salt;
-// echo "<br>";
-// echo $encrypted_password;
-// echo "</pre>";
-// die();
 ?>
 <!DOCTYPE html>
 <html>
@@ -232,9 +221,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <center>
                     <div class="col-md-10 col-md-offset-2 text-center" id="mainpic">
                         <img src="https://i.imgur.com/M6JQeoM.png" alt="" align="bottom">
-                        <p> <?=$option['title']?> </p>
-                    </center>
-                       
+                        <p><?=$option['title']?></p>
+                        <p><?=$option['img_url']?></p>
+                        <p><?=$option['comp_name']?></p>
+                        <p><?=$option['post']?></p>
+                     
                     </div>
                     </td>
                     <?php }?>

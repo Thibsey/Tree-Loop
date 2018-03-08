@@ -300,14 +300,20 @@ class Process extends CI_Controller
     {
 
         
-        $this->form_validation->set_rules('title', 'Title', 'required');
-        $this->form_validation->set_rules('description', 'Job Description', 'required');
+        $this->form_validation->set_rules('title', 'Title', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('description', 'Job Description', 'required|max_length[500]');
+        $this->form_validation->set_rules('lanreq', 'Language Requirement', 'required|alpha');
         $this->form_validation->set_rules('company-url', 'Link to Original Offer', 'required|valid_url');
-
+        $this->form_validation->set_rules('tag1', 'Tags', 'required|numeric');
+        $this->form_validation->set_rules('tag2', 'Tags', 'required|numeric');
+        $this->form_validation->set_rules('tag3', 'Tags', 'required|numeric');
+        
         if ($this->form_validation->run() == false) 
         {
-            $validationerror = validation_errors();
-            $this->load->view('postpage', array('errors' => $validationerror));
+            $validationerror['errors'] = validation_errors();
+            $this->load->model('VentureModel');
+            $validationerror['tags'] = $this->VentureModel->get_tags();
+            $this->load->view('postpage', $validationerror);
         }  else {
             $title = $this->input->post('title', TRUE);
             $tags1 = $this->input->post('tag1', TRUE);
@@ -343,6 +349,7 @@ class Process extends CI_Controller
 
             $this->load->model('VentureModel');
             $this->VentureModel->insertJob($postInfo, $tagInfo1, $tagInfo2, $tagInfo3);
+            $tag['tags'] = $this->VentureModel->get_tags();
             $this->load->view('postpage');
         }
     }
@@ -408,12 +415,8 @@ class Process extends CI_Controller
 
      public function logout()
     {
-         $this->session->sess_destroy();
-         $this->session->set_userdata($user1 = null);
-        $this->load->model('VentureModel');
-        $jobs['listjobs'] = $this->VentureModel->home_page_list();
-        $jobs['highlight'] = $this->VentureModel->highlight();
-        $this->load->view('homepage', $jobs);
+        $this->session->sess_destroy();
+        $this->load->view('logout');
     }
 
     
