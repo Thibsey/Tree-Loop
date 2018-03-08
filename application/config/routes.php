@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 $route['default_controller'] = 'process';
-$route['login'] = 'processes/login';
 $route['index'] = 'process/index';
 $route['register'] = 'process/register';
 $route['login'] = 'process/login';
@@ -21,6 +20,7 @@ $route['deletePage'] = 'process/deletePage';
 $route['delete/(:any)'] = 'process/deletePost/$1';
 $route['deleteUser/(:any)'] = 'process/deleteUser/$1';
 $route['logout'] = 'process/logout';
+$route['logoutredo'] = 'logout/loggingout';
 $route['admin-verify-post/(:any)'] = 'process/adminVerifyPost/$1';
 $route['admin-delete-post/(:any)'] = 'process/adminDeletePost/$1';
 $route['admin-verify-user/(:any)'] = 'process/adminVerifyUser/$1';

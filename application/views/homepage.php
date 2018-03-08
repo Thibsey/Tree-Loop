@@ -1,16 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-// echo "<pre>";
-// $password = "123456";
-// $salt = bin2hex(openssl_random_pseudo_bytes(22));
-// $encrypted_password = md5($password . '' . $salt);
-// echo $password;
-// echo "<br>";
-// echo $salt;
-// echo "<br>";
-// echo $encrypted_password;
-// echo "</pre>";
-// die();
 ?>
 <!DOCTYPE html>
 <html>
