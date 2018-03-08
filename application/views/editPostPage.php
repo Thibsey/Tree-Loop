@@ -96,20 +96,7 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
             padding-top:40px;
             padding-right:350px;
         }
-        
-        #footerone{
-            display:inline-block;
-            padding-right:800px;
-        
-        }
-        #footerone{
-        display:inline-block;
-        padding-right:800px;
-
-        }
-        #footertow{
-        display:inline-block;
-        }
+ 
         .logout_button{
             padding-top:100px;
         }
@@ -133,6 +120,15 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
         }
         #tdid{
             padding-right:100px;
+        }
+        #footerone{
+            padding-left:50px;
+        
+        }
+        #footerimg{
+            padding-right:400px;
+            padding-left:400px;
+           
         }
         
         
@@ -215,20 +211,24 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
     "iddelete">DELETE ACCOUNT</button></a>
 
     <footer id="fh5co-footer" role="contentinfo">
-            <div id="footerone">
+                 <table>
+                     <tr>
+                         <td id="footerone">
                 <a href="#"> Credo </a>&nbsp;&nbsp;&nbsp;
                 <a href="#"> Support </a>&nbsp;&nbsp;&nbsp;
-                <a href="#"> Contact </a>
-            </div>
-            <div id="footertow">
+                        </td>
+                        <td id="footerimg">
+                <img src="https://i.imgur.com/FCqpUOR.png" alt="venture caffe logo" width= >
+                        </td>
+                        <td id="footertow">          
                 <a href="#" class="fa fa-facebook"></a>&nbsp;&nbsp;&nbsp;
                 <a href="#" class="fa fa-twitter"></a>&nbsp;&nbsp;&nbsp;
                 <a href="#" class="fa fa-linkedin"></a>&nbsp;&nbsp;&nbsp;
                 <a href="#" class="fa fa-instagram"></a>
-                
-            </div>
+                        </td>          
+                    </tr>
+                </table>
         </footer>
-    
 
     </body>
 </html>

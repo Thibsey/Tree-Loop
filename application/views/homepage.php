@@ -68,6 +68,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         -webkit-transition: 0.5s;
         -o-transition: 0.5s;
         transition: 0.5s;
+        font-size:25px;
         }
 
         p {
@@ -107,14 +108,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         -ms-border-radius: 4px;
         border-radius: 4px;
         }
-        #fh5co-footer {
-        padding: 7em 0;
-        float: left;
-        width: 100%;
-        position: relative;
-        background: #262626;
-        padding-top:50px;
-        }
+        
         #fh5co-page {
         position: relative;
         z-index: 2;
@@ -148,20 +142,26 @@ defined('BASEPATH') or exit('No direct script access allowed');
             padding-top:40px;
             padding-right:350px;
         }
+        #fh5co-footer {
+        padding: 7em 0;
+        float: left;
+        width: 100%;
+        position: relative;
+        background: #262626;
+        padding-top:50px;
+        }
         
         #footerone{
-            display:inline-block;
-            padding-right:800px;
+            padding-left:50px;
         
         }
-        #footerone{
-        display:inline-block;
-        padding-right:800px;
+        #footerimg{
+            padding-right:400px;
+            padding-left:400px;
+           
+        }
 
-        }
-        #footertow{
-        display:inline-block;
-        }
+        
 
     </style>
 </head>
@@ -172,7 +172,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <tr>
         <td>
             <div  id="headerpic">
-                <a href="http://localhost"><img src="https://i.imgur.com/M6JQeoM.png"></a>
+                <a href="http://localhost"><img src="https://i.imgur.com/M6JQeoM.png" alt="venture caffe logo"></a>
             </div class="buttonclass">
             </td><td>
             <div id="headernav">
@@ -229,11 +229,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <tr>
                     <?php foreach ($highlight as $option) { ?>
                     <td>
-                        
-
+                        <center>
                     <div class="col-md-10 col-md-offset-2 text-center" id="mainpic">
                         <img src="https://i.imgur.com/M6JQeoM.png" alt="" align="bottom">
                         <p> <?=$option['title']?> </p>
+                    </center>
                        
                     </div>
                     </td>
@@ -257,18 +257,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	        </div>
 	    </div>
         <footer id="fh5co-footer" role="contentinfo">
-            <div id="footerone">
+                 <table>
+                     <tr>
+                         <td id="footerone">
                 <a href="#"> Credo </a>&nbsp;&nbsp;&nbsp;
                 <a href="#"> Support </a>&nbsp;&nbsp;&nbsp;
-                <a href="#"> Contact </a>
-            </div>
-            <div id="footertow">
+                        </td>
+                        <td id="footerimg">
+                <img src="https://i.imgur.com/FCqpUOR.png" alt="venture caffe logo" width= >
+                        </td>
+                        <td id="footertow">          
                 <a href="#" class="fa fa-facebook"></a>&nbsp;&nbsp;&nbsp;
                 <a href="#" class="fa fa-twitter"></a>&nbsp;&nbsp;&nbsp;
                 <a href="#" class="fa fa-linkedin"></a>&nbsp;&nbsp;&nbsp;
                 <a href="#" class="fa fa-instagram"></a>
-                
-            </div>
+                        </td>          
+                    </tr>
+                </table>
         </footer>
 	</div>
 </body>

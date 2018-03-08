@@ -116,16 +116,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
             padding-top:40px;
             padding-right:350px;
         }
-        #mainpic{
+        
+        #footerone{
+            padding-left:50px;
         
         }
-        #footerone{
-             display:inline-block;
-             padding-right:800px;
-
-        }
-        #footertow{
-            display:inline-block;
+        #footerimg{
+            padding-right:400px;
+            padding-left:400px;
+           
         }
 
 
@@ -186,20 +185,24 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     <div class="container">
     </div>
-
     <footer id="fh5co-footer" role="contentinfo">
-    <div id="footerone">
-        <a href="#"> Credo </a>&nbsp;&nbsp;&nbsp;
-        <a href="#"> Support </a>&nbsp;&nbsp;&nbsp;
-        <a href="#"> Contact </a>
-    </div>
-    <div id="footertow">
-        <a href="#" class="fa fa-facebook"></a>&nbsp;&nbsp;&nbsp;
-        <a href="#" class="fa fa-twitter"></a>&nbsp;&nbsp;&nbsp;
-        <a href="#" class="fa fa-linkedin"></a>&nbsp;&nbsp;&nbsp;
-        <a href="#" class="fa fa-instagram"></a>
-        
-    </div>
+    <table>
+        <tr>
+            <td id="footerone">
+   <a href="#"> Credo </a>&nbsp;&nbsp;&nbsp;
+   <a href="#"> Support </a>&nbsp;&nbsp;&nbsp;
+           </td>
+           <td id="footerimg">
+   <img src="https://i.imgur.com/FCqpUOR.png" alt="venture caffe logo" width= >
+           </td>
+           <td id="footertow">          
+   <a href="#" class="fa fa-facebook"></a>&nbsp;&nbsp;&nbsp;
+   <a href="#" class="fa fa-twitter"></a>&nbsp;&nbsp;&nbsp;
+   <a href="#" class="fa fa-linkedin"></a>&nbsp;&nbsp;&nbsp;
+   <a href="#" class="fa fa-instagram"></a>
+           </td>          
+       </tr>
+   </table>
 </footer>
 </body>
 </html>
