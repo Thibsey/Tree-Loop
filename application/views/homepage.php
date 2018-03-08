@@ -233,8 +233,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
                     <div class="col-md-10 col-md-offset-2 text-center" id="mainpic">
                         <img src="https://i.imgur.com/M6JQeoM.png" alt="" align="bottom">
-                        <p> <?=$option['title']?> </p>
-                       
+                        <p><?=$option['title']?></p>
+                        <p><?=$option['img_url']?></p>
+                        <p><?=$option['comp_name']?></p>
+                        <p><?=$option['post']?></p>
+                     
                     </div>
                     </td>
                     <?php }?>
