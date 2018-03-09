@@ -214,9 +214,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <strong>End Date:</strong> <p><?= $posts[0]['end_date'] ?></p>
                     <a href="<?= $posts[0]['company_url']?>"><?= $posts[0]['company_url'] ?></a><br><br>
                     <i>Tags:</i><br>
+                    <?php if (isset($tags[0])) { ?>
                     <a href="/search-by-tags/<?= $tags[0]['id'] ?>"><button class="btn btn-secondary"><?= $tags[0]['tag'] ?></button></a>
+                    <?php } ?>
+                    <?php if (isset($tags[1])) { ?>
                     <a href="/search-by-tags/<?= $tags[1]['id'] ?>"><button class="btn btn-secondary"><?= $tags[1]['tag'] ?></button></a>
+                    <?php } ?>
+                    <?php if (isset($tags[2])) { ?>
                     <a href="/search-by-tags/<?= $tags[2]['id'] ?>"><button class="btn btn-secondary"><?= $tags[2]['tag'] ?></button></a>
+                    <?php } ?>
                 </div>
 		    </div>
 	    </div>  
