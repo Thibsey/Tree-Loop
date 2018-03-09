@@ -174,7 +174,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
         <div id="postid">
             <form action="/postjob" method="POST">
-                <i>Job Title &amp; Type of Company</i>
+                <i>Job Title</i>
                 <br>
                 <input type="text" name="title" placeholder="Job Title">
                 <br>
@@ -233,26 +233,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
         <div id="fh5co-intro-section" class="col-md-12">
 		<table>
-        <tr>
-        <td>
-			<div class="col-md-10 col-md-offset-2 text-center" id="mainpic">
-                <img src="https://i.imgur.com/M6JQeoM.png" alt="" align="bottom">
-                <p>Connecting innovators to make things happen Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
-			</div>
-            </td>
-            <td>
-            <div class="col-md-10 col-md-offset-2 text-center" >
-                <img src="https://i.imgur.com/M6JQeoM.png" alt="">
-                <p>Connecting innovators to make things happen Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
-			</div>
-            </td>
-            <td>
-            <div class="col-md-10 col-md-offset-2 text-center" >
-                <img src="https://i.imgur.com/M6JQeoM.png" alt="">
-                <p>Connecting innovators to make things happen Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
-			</div>
-            </td>
-            </tr>
+            <divid="fh5co-intro-section" class="col-md-12" >
+                <tr>
+                            <?php foreach ($highlight as $option) { ?>
+                            <td class="tdid">
+                                
+                            <div class="col-md-10 col-md-offset-2 text-center" >
+                                <!-- <img  src="" align="bottom" id="mainpic"> -->
+                                <p class="pclass"><?= $option['title'] ?></p>
+                                <img class="pclass" src="<?= $option['img_url'] ?>" width="300">
+                                <p class="pclass"><?= $option['comp_name'] ?></p>
+                                <p class="pclass"><?= $option['post'] ?></p>
+                            
+                            </div>
+                            </td>
+                            <?php 
+                        } ?>
+                            </tr>
+                <tr>
+            </div>
         </table>        
 	</div>
     <footer id="fh5co-footer" role="contentinfo">

@@ -108,13 +108,72 @@ class Process extends CI_Controller
             }
         }
     }
-
+    
     public function postpage()
     {
         $this->load->model('VentureModel');
-        $tag['tags'] = $this->VentureModel->get_tags();
-        $this->load->view('postpage', $tag);
-
+        $data['tags'] = $this->VentureModel->get_tags();
+        $data['highlight'] = $this->VentureModel->highlight();
+        $this->load->view('postpage', $data);
+        
+    }
+    
+    public function postjob()
+    {
+    
+        
+        $this->form_validation->set_rules('title', 'Title', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('description', 'Job Description', 'required|max_length[500]');
+        $this->form_validation->set_rules('lanreq', 'Language Requirement', 'required|alpha');
+        $this->form_validation->set_rules('company-url', 'Link to Original Offer', 'required|valid_url');
+        $this->form_validation->set_rules('tag1', 'Tags', 'required|differs[tag2]|differs[tag3]');
+        $this->form_validation->set_rules('tag2', 'Tags', 'differs[tag1]|differs[tag3]');
+        $this->form_validation->set_rules('tag3', 'Tags', 'differs[tag1]|differs[tag2]');
+        
+        if ($this->form_validation->run() == false) 
+        {
+            $this->load->model('VentureModel');
+            $validationerror['errors'] = validation_errors();
+            $validationerror['tags'] = $this->VentureModel->get_tags();
+            $this->load->view('postpage', $validationerror);
+        }  else {
+            $title = $this->input->post('title', TRUE);
+            $tags1 = $this->input->post('tag1', TRUE);
+            $tags2 = $this->input->post('tag2', TRUE);
+            $tags3 = $this->input->post('tag3', TRUE);
+            $imgURL = $this->input->post('imgurl', TRUE);
+            $description = $this->input->post('description', TRUE);
+            $endDate = $this->input->post('enddate', TRUE);
+            $lanReq = $this->input->post('lanreq', TRUE);
+            $companyUrl = $this->input->post('company-url', TRUE);
+            $verify = $this->input->post('verify', TRUE);
+            $userId = $this->input->post('id', TRUE);
+            
+            $postInfo = array(
+                'title' => $title,
+                'img_url' => $imgURL,
+                'post' => $description,
+                'end_date' => $endDate,
+                'language_req' => $lanReq,
+                'verify' => $verify,
+                'company_url' => $companyUrl,
+                'users_id' => $userId
+            );
+            $tagInfo1 = array(
+                'tags_id' => $tags1,
+            );
+            $tagInfo2 = array(
+                'tags_id' => $tags2,
+            );
+            $tagInfo3 = array(
+                'tags_id' => $tags3,
+            );
+    
+            $this->load->model('VentureModel');
+            $this->VentureModel->insertJob($postInfo, $tagInfo1, $tagInfo2, $tagInfo3);
+            $tag['tags'] = $this->VentureModel->get_tags();
+            $this->load->view('postpage');
+        }
     }
 
     public function adminpanel()
@@ -399,63 +458,6 @@ please contact an Venture Café Admin for more information.";
         }
     }
 
-    public function postjob()
-    {
-
-        
-        $this->form_validation->set_rules('title', 'Title', 'required|alpha_numeric_spaces');
-        $this->form_validation->set_rules('description', 'Job Description', 'required|max_length[500]');
-        $this->form_validation->set_rules('lanreq', 'Language Requirement', 'required|alpha');
-        $this->form_validation->set_rules('company-url', 'Link to Original Offer', 'required|valid_url');
-        $this->form_validation->set_rules('tag1', 'Tags', 'required|differs[tag2]|differs[tag3]');
-        $this->form_validation->set_rules('tag2', 'Tags', 'differs[tag1]|differs[tag3]');
-        $this->form_validation->set_rules('tag3', 'Tags', 'differs[tag1]|differs[tag2]');
-        
-        if ($this->form_validation->run() == false) 
-        {
-            $validationerror['errors'] = validation_errors();
-            $this->load->model('VentureModel');
-            $validationerror['tags'] = $this->VentureModel->get_tags();
-            $this->load->view('postpage', $validationerror);
-        }  else {
-            $title = $this->input->post('title', TRUE);
-            $tags1 = $this->input->post('tag1', TRUE);
-            $tags2 = $this->input->post('tag2', TRUE);
-            $tags3 = $this->input->post('tag3', TRUE);
-            $imgURL = $this->input->post('imgurl', TRUE);
-            $description = $this->input->post('description', TRUE);
-            $endDate = $this->input->post('enddate', TRUE);
-            $lanReq = $this->input->post('lanreq', TRUE);
-            $companyUrl = $this->input->post('company-url', TRUE);
-            $verify = $this->input->post('verify', TRUE);
-            $userId = $this->input->post('id', TRUE);
-            
-            $postInfo = array(
-                'title' => $title,
-                'img_url' => $imgURL,
-                'post' => $description,
-                'end_date' => $endDate,
-                'language_req' => $lanReq,
-                'verify' => $verify,
-                'company_url' => $companyUrl,
-                'users_id' => $userId
-            );
-            $tagInfo1 = array(
-                'tags_id' => $tags1,
-            );
-            $tagInfo2 = array(
-                'tags_id' => $tags2,
-            );
-            $tagInfo3 = array(
-                'tags_id' => $tags3,
-            );
-
-            $this->load->model('VentureModel');
-            $this->VentureModel->insertJob($postInfo, $tagInfo1, $tagInfo2, $tagInfo3);
-            $tag['tags'] = $this->VentureModel->get_tags();
-            $this->load->view('postpage');
-        }
-    }
 
     public function onePost($arg)
     {
