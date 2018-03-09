@@ -280,14 +280,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <?php }?></h5>
                                     <a href="/superadmin-delete-user/<?= $user['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
                                     <a href="/adminEditUserPage/<?= $user['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a><br><br>
+                                        <?php if ($user['rank_id'] == 0) { ?>
+                                            <form action="/superadmin-rank-update/<?=$user['id']?>" method="POST">
+                                                <select name="rank-update">
+                                                    <option value="0">Super Admin</option>
+                                                    <option value="1">Admin</option>
+                                                    <option value="2">User</option>
+                                                </select><br>
+                                                <input type="submit" value="Update" class="btn btn-secondary">
+                                            </form><br><br>
+                                        <?php } elseif($user['rank_id'] == 1 || $user['rank_id'] == 2) { ?>
                                     <form action="/superadmin-rank-update/<?=$user['id']?>" method="POST">
                                         <select name="rank-update">
-                                            <option value="0">Super Admin</option>
-                                            <option value="1">Admin</option>
                                             <option value="2">Users</option>
+                                            <option value="1">Admin</option>
+                                            <option value="0">Super Admin</option>
                                         </select><br>
                                         <input type="submit" value="Update" class="btn btn-secondary">
                                     </form><br><br>
+                                    <?php } ?>
                             <?php  }} else { ?><br>
                             <h1><strong>No users to Manage.</strong></h1>
                             <?php }} else {?>
