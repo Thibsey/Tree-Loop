@@ -241,7 +241,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <br>
                         <br>
                     <?php }} ?>
-                    <a href="showpage"><button type="button" class="btn btn-secondary">see more</button></a>
+                    <a href="showpage"><button type="button" class="btn btn-secondary">Show All</button></a>
                     <?php 
                     if (null !== $this->session->userdata('is_logged_in')) { ?>
                     <a href="/postpage"><button type="button" class="btn btn-secondary">Post Job Offer</button></a>
@@ -270,21 +270,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </td>
                     <?php }?>
                     </tr>
-                    
-                    <!-- <td>
-                    <div class="col-md-10 col-md-offset-2 text-center" >
-                        <img src="https://i.imgur.com/M6JQeoM.png" alt="">
-                        <p>Connecting innovators to make things happen Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
-                    </div>
-                    </td>
-                    <td>
-                    <div class="col-md-10 col-md-offset-2 text-center" >
-                        <img src="https://i.imgur.com/M6JQeoM.png" alt="">
-                        <p>Connecting innovators to make things happen Venture Café Foundation builds innovation <br> communities. We host the largest weekly innovation community event in Rotterdam.<br> With the community, for the community!</p>
-                    </div>
-                    </td> -->
-                   
-                       
             </div>
             </table> 
             </center>

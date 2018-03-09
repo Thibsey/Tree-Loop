@@ -223,12 +223,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             This is where you as the admin have controle <br> over the Users and their posts.
                             </p>
                             <h4><strong>Features</strong></h4>
+                            <hr>
                             <h5><strong>User Verification:</strong></h5>
                             <p>List of user that have registered and are <br> pending admin approval to be verified users.</p>
+                            <hr>
                             <h5><strong>Post Verification:</strong></h5>
                             <p>List of posts that have been posted by verified users, <br> that are pending admin approval.<br> The admin can decline(delete), <br> accept and/or edit the posts before approving.</p>
+                            <hr>
                             <h5><strong>User Management:</strong></h5>
                             <p>List of all verified users. <br> The admin can remove their accounts <br> here or adjust their password. <br> Additionally the Super admin can also <br> promote users to admin status and delete admin accounts. </p>
+                            <hr>
                             <h5><strong>Post Management:</strong></h5>
                             <p>List of all verified posts. <br>
                             The admin can remove, <br> edit and highlight the posts.
@@ -241,6 +245,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <h3><strong>User Verification</strong></h3>
                             <?php if (isset($usersv)) {
                                 foreach ($usersv as $userv) { ?>
+                                    <hr>
                                     <h5><strong>Company Name: &nbsp; </strong><?= $userv['comp_name'] ?></h5>
                                     <a href="/admin-verify-user/<?= $userv['id'] ?>"><button class="btn btn-secondary">Accept Company</button></a>
                                     <a href="/admin-delete-user/<?= $userv['id'] ?>"><button class="btn btn-secondary">Decline Company</button></a><br><br>
@@ -257,7 +262,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <hr>
                                     <h5><strong>Posted by: &nbsp; </strong><?= $newpost['comp_name'] ?></h5>
                                     <h5><strong>Post Title: &nbsp; </strong><?= $newpost['title'] ?></h5>
+                                    <div style="width: 300px;">
                                     <p><?= $newpost['post'] ?></p>
+                                    </div>
                                     <a href="/admin-verify-post/<?= $newpost['id'] ?>"><button class="btn btn-secondary">Accept Post</button></a>
                                     <a href="/admin-delete-post/<?= $newpost['id'] ?>"><button class="btn btn-secondary">Decline Post</button></a>
                             <?php }} else { ?>
@@ -271,6 +278,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <?php if(0 == $this->session->userdata('rank_id')){
                             if (isset($users)) {
                                 foreach ($users as $user) { ?>
+                                    <hr>
                                     <h5><strong>Company Name: &nbsp; </strong><?= $user['comp_name'] ?><br><?php if ($user['rank_id'] == 0) {?>
                                         <strong>User Rank:</strong> &nbsp; Super Admin
                                     <?php } elseif ($user['rank_id'] == 1) {?>
@@ -304,6 +312,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <?php }} else {?>
                             <?php if (isset($usersna)) {
                                 foreach ($usersna as $userna) { ?>
+                                    <hr>
                                     <h5><strong>Company Name: &nbsp; </strong><?= $userna['comp_name'] ?></h5>
                                     <a href="/superadmin-delete-user/<?= $userna['id'] ?>"><button class="btn btn-secondary">Delete</button></a>
                                     <a href="/adminEditUserPage/<?= $userna['id'] ?>"><button class="btn btn-secondary">Edit Info</button></a>
@@ -319,6 +328,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
                             <?php if (isset($userposts)) {
                                 foreach ($userposts as $toEdit) { ?>
+                                    <hr>
                                     <h5><strong>Posted by: &nbsp; </strong><?= $toEdit['comp_name'] ?></h5>
                                     <?php if ($toEdit['highlights'] == 1) {?>
                                         <strong style="color: red;">Highlighted Post</strong><br>
